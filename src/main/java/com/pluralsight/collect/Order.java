@@ -34,8 +34,31 @@ public class Order {
         chips.remove(product);
     }
 
+    //this method makes sure that if the customer orders no sandwiches at all, they are REQUIRED to order chips or drinks
+    public boolean isValid() {
+        if(sandwiches.isEmpty()) {
+            return !chips.isEmpty() || !drinks.isEmpty();
+        }
+
+        return true;
+    }
+
     public double calculateTotal() {
-        return 0;
+        double total = 0;
+
+        for(Product s: sandwiches) {
+            total += s.calculateTotal();
+        }
+
+        for(Product c: chips) {
+            total += c.calculateTotal();
+        }
+
+        for(Product d: drinks) {
+            total += d.calculateTotal();
+        }
+
+        return total;
     }
 
 
