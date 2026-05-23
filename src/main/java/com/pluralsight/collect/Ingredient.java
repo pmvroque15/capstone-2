@@ -9,5 +9,13 @@ public abstract class Ingredient {
         this.isExtra = isExtra;
     }
 
-    abstract double getPrice();
+    public String getName() {
+        return name;
+    }
+
+    public boolean isExtra() {
+        return isExtra;
+    }
+
+    public abstract double getPrice(SandwichSize size);
 }
