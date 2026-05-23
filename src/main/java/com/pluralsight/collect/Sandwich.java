@@ -28,10 +28,27 @@ public class Sandwich implements Product {
         return price;
     }
 
+    public boolean getIsToasted() {
+        return isToasted;
+    }
 
+    public void addIngredient(Ingredient ingredient) {
+        ingredients.add(ingredient);
+    }
+
+    public void removeIngredient(Ingredient ingredient) {
+        ingredients.remove(ingredient);
+    }
 
     @Override
-    public double calculatePrice(){
-        return 100;
+    public double calculatePrice() {
+        double total = sandwichSize.getPrice();
+
+        for (Ingredient ingredient : ingredients) {
+            total += ingredient.getPrice(sandwichSize);
+
+        }
+
+        return total;
     }
 }
