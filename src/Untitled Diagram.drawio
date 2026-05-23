@@ -1,13 +1,13 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="YyGXs1iZocn5N6D9l4fh">
-    <mxGraphModel dx="2051" dy="1688" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1491" dy="1598" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-1" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="Sandwich&amp;nbsp;" vertex="1">
           <mxGeometry height="410" width="190" x="90" y="480" as="geometry" />
         </mxCell>
-        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-2" parent="Uu4XMJPzRMyQYmsgkCTQ-1" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="&lt;div&gt;- sandwichSize:&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;SandwichSize&lt;/span&gt;&lt;/div&gt;&lt;div&gt;- BreadType: BreadType&lt;div&gt;- isToasted: boolean&lt;/div&gt;&lt;div&gt;- price: double;&lt;/div&gt;&lt;div&gt;-----------------------------------&lt;/div&gt;&lt;div&gt;+ Sandwich(iSandwichSize sandwichSize, BreadType breadType, double price)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;setters/getters&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;@Override&lt;/div&gt;&lt;div&gt;+calculatePrice()&lt;/div&gt;&lt;/div&gt;" vertex="1">
+        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-2" parent="Uu4XMJPzRMyQYmsgkCTQ-1" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="&lt;div&gt;- sandwichSize:&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;SandwichSize&lt;/span&gt;&lt;/div&gt;&lt;div&gt;- BreadType: BreadType&lt;div&gt;- isToasted: boolean&lt;/div&gt;&lt;div&gt;- price: double;&lt;/div&gt;&lt;div&gt;-ingredients: ArrayList&amp;lt;Ingredient&amp;gt;&lt;/div&gt;&lt;div&gt;-----------------------------------&lt;/div&gt;&lt;div&gt;+ Sandwich(iSandwichSize sandwichSize, BreadType breadType, double price)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;setters/getters&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;@Override&lt;/div&gt;&lt;div&gt;+calculatePrice()&lt;/div&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="360" width="190" y="50" as="geometry" />
         </mxCell>
         <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-3" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="Drink" vertex="1">
@@ -102,10 +102,10 @@
             <mxPoint x="420" y="727" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-49" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="Toppings" vertex="1">
+        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-49" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="&lt;div&gt;&amp;lt;&amp;lt;Inheritance&amp;gt;&amp;gt;&lt;/div&gt;Ingredient" vertex="1">
           <mxGeometry height="200" width="160" x="-280" y="460" as="geometry" />
         </mxCell>
-        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-50" parent="Uu4XMJPzRMyQYmsgkCTQ-49" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="-name: String&amp;nbsp;&lt;div&gt;-isPremium: boolean&lt;/div&gt;&lt;div&gt;-isExtra: Boolean&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+getPrice(size): double&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-50" parent="Uu4XMJPzRMyQYmsgkCTQ-49" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="-name: String&amp;nbsp;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;-isExtra: Boolean&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ Ingredient(Stirng name, boolean isExtra)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ abstract getPrice(): double;&lt;/div&gt;" vertex="1">
           <mxGeometry height="150" width="160" y="50" as="geometry" />
         </mxCell>
         <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-53" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=1.019;entryY=0.111;entryDx=0;entryDy=0;entryPerimeter=0;exitX=-0.023;exitY=0.577;exitDx=0;exitDy=0;exitPerimeter=0;dashed=1;" value="">
@@ -122,6 +122,42 @@
         </mxCell>
         <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-55" parent="1" style="line;strokeWidth=1;rotatable=0;dashed=0;labelPosition=right;align=left;verticalAlign=middle;spacingTop=0;spacingLeft=6;points=[];portConstraint=eastwest;" value="" vertex="1">
           <mxGeometry height="10" width="100" x="-530" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-56" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-590" y="540" as="sourcePoint" />
+            <mxPoint x="-280" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-57" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;&lt;div&gt;Meat&lt;/div&gt;" vertex="1">
+          <mxGeometry height="280" width="160" x="-750" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-58" parent="Uu4XMJPzRMyQYmsgkCTQ-57" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="+ Meat(String name, boolean isExtra)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;@Override&lt;/div&gt;&lt;div&gt;+ getPrice(size: SandwichSize): double&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="230" width="160" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-61" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;&lt;div&gt;Cheese&lt;/div&gt;" vertex="1">
+          <mxGeometry height="230" width="160" x="-750" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-62" parent="Uu4XMJPzRMyQYmsgkCTQ-61" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="+ Cheese(String name, boolean isExtra)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;@Override&amp;nbsp;&lt;br&gt;+ getPrice(size: SandwichSize): double&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="160" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-63" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;&lt;div&gt;RegularToppings&lt;/div&gt;" vertex="1">
+          <mxGeometry height="210" width="160" x="-770" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-64" parent="Uu4XMJPzRMyQYmsgkCTQ-63" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" value="+ RegularToppings(String name, boolean isExtra)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;@Override&lt;/div&gt;&lt;div&gt;+ getPrice(size: SandwichSize): double&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="170" width="160" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-68" edge="1" parent="1" source="Uu4XMJPzRMyQYmsgkCTQ-64" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" target="Uu4XMJPzRMyQYmsgkCTQ-50" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-530" y="680" as="sourcePoint" />
+            <mxPoint x="-220" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Uu4XMJPzRMyQYmsgkCTQ-69" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=-0.031;entryY=0.172;entryDx=0;entryDy=0;entryPerimeter=0;" target="Uu4XMJPzRMyQYmsgkCTQ-49" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-590" y="370" as="sourcePoint" />
+            <mxPoint x="-280" y="370" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
