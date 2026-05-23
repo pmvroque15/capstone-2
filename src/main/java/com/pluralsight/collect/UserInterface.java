@@ -1,33 +1,24 @@
 package com.pluralsight.collect;
 
+import java.awt.*;
 import java.util.Scanner;
 
 public class UserInterface {
     private Scanner scanner = new Scanner(System.in);
-
     public void display() {
         homeScreen();
     }
 
     public void homeScreen() {
-        String mainMenu = """
-                      DELIcious Sandwiches
-                "Built Different. Stacked right."
-                --------------------------------
-                        Select an option:
-                        1 - New Order
-                        0 - Exit
-                """;
 
         boolean running = true;
         do {
-
-            System.out.println(mainMenu);
+            MenuStrings.mainMenuDisplay();
             System.out.println("What can I get started with you? ");
             int input = Integer.parseInt(scanner.nextLine());
             switch (input) {
                 case 1:
-                    newOrderRequest();
+                    orderScreen();
                     break;
                 case 0:
                     exit();
@@ -39,34 +30,11 @@ public class UserInterface {
         } while (running);
     }
 
-    public void orderScreen() {
-
-    }
-
-    public void checkoutScreen() {
-
-    }
-
-    public void exit() {
-        System.out.println("Thank you for using the app!");
-    }
-
-    private void newOrderRequest() {
-        String orderScreen = """
-                
-                          Order Screen
-                --------------------------------
-                        Select an option:
-                        1 - Add Sandwich
-                        2 - Add Drink
-                        3 - Add Chips
-                        4 - Checkout
-                        0 - Cancel Order
-                """;
+    private void orderScreen() {
 
         boolean running = true;
         do {
-            System.out.println(orderScreen);
+            MenuStrings.orderMenuDisplay();
             System.out.println("What would you like? ");
             int input = Integer.parseInt(scanner.nextLine());
             switch (input) {
@@ -91,8 +59,8 @@ public class UserInterface {
         } while(running);
     }
 
-    private void checkoutRequest() {
-        System.out.println("TEST checkout");
+    private void createASandwichOrderRequest() {
+
     }
 
     private void createAChipsOrderRequest() {
@@ -104,9 +72,20 @@ public class UserInterface {
         System.out.println("TEST drink order");
     }
 
-    private void createASandwichOrderRequest() {
-        System.out.println("TEST sandwich order");
+    public void checkoutScreen() {
+
     }
+
+    public void exit() {
+        System.out.println("Thank you for using the app!");
+    }
+
+
+    private void checkoutRequest() {
+        System.out.println("TEST checkout");
+    }
+
+
 
 }
 
