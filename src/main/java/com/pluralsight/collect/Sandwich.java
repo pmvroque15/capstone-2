@@ -28,7 +28,7 @@ public class Sandwich implements Product {
 
 
     @Override
-    public double calculateTotal(){
-        return 0;
+    public double calculatePrice(){
+        return 100;
     }
 }

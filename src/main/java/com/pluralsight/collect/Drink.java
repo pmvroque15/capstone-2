@@ -10,7 +10,7 @@ public class Drink implements Product {
     }
 
     @Override
-    public double calculateTotal() {
+    public double calculatePrice() {
         return 0;
     }
 }

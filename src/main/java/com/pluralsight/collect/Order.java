@@ -7,8 +7,7 @@ public class Order {
     private ArrayList<Product> sandwiches = new ArrayList<>();
     private ArrayList<Product> drinks = new ArrayList<>();
     private ArrayList<Product> chips = new ArrayList<>();
-    private LocalDateTime orderTime = LocalDateTime.now();
-    private LocalDateTime orderDate = LocalDateTime.now();
+    private LocalDateTime orderTimeAndDate = LocalDateTime.now();
 
     public void addSandwich(Product product){
         sandwiches.add(product);
@@ -47,15 +46,15 @@ public class Order {
         double total = 0;
 
         for(Product s: sandwiches) {
-            total += s.calculateTotal();
+            total += s.calculatePrice();
         }
 
         for(Product c: chips) {
-            total += c.calculateTotal();
+            total += c.calculatePrice();
         }
 
         for(Product d: drinks) {
-            total += d.calculateTotal();
+            total += d.calculatePrice();
         }
 
         return total;

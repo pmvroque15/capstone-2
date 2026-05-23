@@ -3,7 +3,7 @@ package com.pluralsight.collect;
 public class Chips implements Product{
 
     @Override
-    public double calculateTotal(){
+    public double calculatePrice(){
         return 1.50;
     }
 }
