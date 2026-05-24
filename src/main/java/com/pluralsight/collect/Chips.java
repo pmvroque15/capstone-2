@@ -16,4 +16,9 @@ public class Chips implements Product{
     public double calculatePrice(){
         return 1.50;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Chips (%s) - $1.50",  getChipType());
+    }
 }
