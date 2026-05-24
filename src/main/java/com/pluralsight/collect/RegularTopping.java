@@ -9,8 +9,18 @@ public class RegularTopping extends Ingredient {
     }
 
     @Override
+    public String getName() {
+        return super.getName();
+    }
+
+    @Override
     public double getPrice(SandwichSize size) {
         //always free
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Regular Toppings: %s%n", getName());
     }
 }
