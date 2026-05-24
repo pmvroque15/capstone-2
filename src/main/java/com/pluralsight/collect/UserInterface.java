@@ -1,6 +1,7 @@
 package com.pluralsight.collect;
+import com.pluralsight.enums.BreadType;
+import com.pluralsight.enums.SandwichSize;
 
-import java.awt.*;
 import java.util.Scanner;
 
 public class UserInterface {

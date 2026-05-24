@@ -1,13 +1,16 @@
 package com.pluralsight.collect;
 
-import java.util.ArrayList;
+import com.pluralsight.enums.BreadType;
+import com.pluralsight.enums.SandwichSize;
+
+import java.util.HashSet;
 
 public class Sandwich implements Product {
     private SandwichSize sandwichSize;
     private BreadType breadType;
     private double price;
     private boolean isToasted;
-    private ArrayList<Ingredient> ingredients = new ArrayList<>();
+    private HashSet<Ingredient> ingredients = new HashSet<>();
 
     public Sandwich(SandwichSize sandwichSize, BreadType breadType, boolean isToasted) {
         this.sandwichSize = sandwichSize;

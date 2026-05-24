@@ -1,5 +1,7 @@
 package com.pluralsight.collect;
 
+import com.pluralsight.enums.SandwichSize;
+
 public abstract class Ingredient {
     private String name;
     private boolean isExtra;

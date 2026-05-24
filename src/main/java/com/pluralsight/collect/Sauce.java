@@ -1,5 +1,7 @@
 package com.pluralsight.collect;
 
+import com.pluralsight.enums.SandwichSize;
+
 public class Sauce extends Ingredient{
     public Sauce(String name) {
         //Always free and it comes with a sauce

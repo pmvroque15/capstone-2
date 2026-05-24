@@ -1,4 +1,4 @@
-package com.pluralsight.collect;
+package com.pluralsight.enums;
 
 public enum DrinkSize {
     SMALL(2.00),

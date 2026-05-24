@@ -1,5 +1,7 @@
 package com.pluralsight.collect;
 
+import com.pluralsight.enums.SandwichSize;
+
 public class Meat extends Ingredient {
     public Meat(String name, boolean isExtra) {
         super(name, isExtra);
