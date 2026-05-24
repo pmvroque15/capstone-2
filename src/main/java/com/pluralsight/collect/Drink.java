@@ -26,6 +26,6 @@ public class Drink implements Product {
     }
 
     public String toString(){
-        return String.format("Drink: %s %s $%.2f %n", getDrinkSize(), getFlavour(), calculatePrice());
+        return String.format("%s %s $%.2f %n", getDrinkSize(), getFlavour(), calculatePrice());
     }
 }

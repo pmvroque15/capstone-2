@@ -29,7 +29,7 @@ public class DeliciousMain {
 
         System.out.println("ORDER SUMMARY:");
         System.out.println(sandwich);
-        System.out.println(chips.getChipType() + " " + chips.calculatePrice());
+        System.out.println(chips);
         System.out.println(drink);
         System.out.println("TOTAL: " + order.calculateTotal());
 
