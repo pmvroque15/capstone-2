@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class UserInterface {
     private Scanner scanner = new Scanner(System.in);
+
     public void display() {
         homeScreen();
     }
@@ -56,10 +57,80 @@ public class UserInterface {
                 default:
                     System.err.printf("Invalid input: %s. Try again.", input);
             }
-        } while(running);
+        } while (running);
     }
 
-    private void createASandwichOrderRequest() {
+    public void createASandwichOrderRequest() {
+        //todo: clean this, make each prompt a new method
+
+        boolean running = true;
+        BreadType breadType = null;
+        //todo clean the default err message it should show BEFORE the prompt if the user typed invalid input
+        do {
+            System.out.println("Select your bread: (Whole, Wheat, Wrap, or Rye) ");
+            String bread = scanner.nextLine().toUpperCase();
+            switch (bread) {
+                case "WHITE":
+                    breadType = BreadType.WHITE;
+                    running = false;
+                    break;
+                case "RYE":
+                    breadType = BreadType.RYE;
+                    running = false;
+                    break;
+                case "WHEAT":
+                    breadType = BreadType.WHEAT;
+                    running = false;
+                    break;
+                case "WRAP":
+                    breadType = BreadType.WRAP;
+                    running = false;
+                    break;
+                default:
+                    System.err.println("Invalid input. Please choose and type the available bread type: Whole, White, Wrap, or Rye.");
+                    break;
+
+            }
+        } while (running);
+
+
+        SandwichSize sandwichSize = null;
+        do {
+            System.out.println("Sandwich size: (4, 8, 12)");
+            int size = Integer.parseInt(scanner.nextLine());
+            switch (size) {
+                case 4:
+                    sandwichSize = SandwichSize.FOUR_INCH;
+                    running = false;
+                    break;
+                case 8:
+                    sandwichSize = SandwichSize.EIGHT_INCH;
+                    running = false;
+                    break;
+                case 12:
+                    sandwichSize = SandwichSize.TWELVE_INCH;
+                    running = false;
+                    break;
+                default:
+                    System.err.println("Invalid input. Please choose and type the available sizes: 4, 8, or 12 inches.");
+                    break;
+
+            }
+        } while (running);
+
+        System.out.println("Toppings: ");
+
+        System.out.println("Meat: ");
+
+        System.out.println("Cheese: ");
+        System.out.println("Other toppings: ");
+        System.out.println("Select sauces: ");
+        System.out.println("Would you like the sandwich toasted? (Yes or No)");
+        String toasted = scanner.nextLine();
+        boolean isToasted = toasted.equalsIgnoreCase("Yes");
+
+        //todo make a defensive code make sure arguments are NOT null
+        Sandwich sandwich = new Sandwich(sandwichSize, breadType, isToasted);
 
     }
 
@@ -84,7 +155,6 @@ public class UserInterface {
     private void checkoutRequest() {
         System.out.println("TEST checkout");
     }
-
 
 
 }
