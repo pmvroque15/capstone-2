@@ -45,13 +45,4 @@ public abstract class Ingredient {
         return (this.isExtra == that.isExtra) && (Objects.equals(name, that.name));
     }
 
-    public double mergeWith(Ingredient that, SandwichSize size) {
-        if (this.equals(that)) {
-               return this.getPrice(size) + that.getPrice(size);
-        }
-
-        return 0;
-    }
-
-
 }

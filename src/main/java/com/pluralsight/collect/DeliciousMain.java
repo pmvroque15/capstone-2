@@ -6,9 +6,9 @@ import com.pluralsight.enums.SandwichSize;
 
 public class DeliciousMain {
     public static void main(String[] args) {
-       Sandwich sandwich = new Sandwich(SandwichSize.TWELVE_INCH, BreadType.WHITE, true);
+       Sandwich sandwich = new Sandwich(SandwichSize.TWELVE_INCH, BreadType.WHITE, false);
        Ingredient meat = new Meat("Steak", false);
-       Ingredient extraMeat = new Meat("Steak", true);
+       Ingredient meat2 = new Meat("Steak", true);
        Ingredient cheese = new Cheese("Provolone", false);
        Ingredient cheese2 = new Cheese("Provolone", false);
        Ingredient lettuce = new RegularTopping("lettuce");
@@ -16,7 +16,7 @@ public class DeliciousMain {
        Chips chips = new Chips("Cheetos");
        Drink drink = new Drink(DrinkSize.MEDIUM, "Diet Coke");
        sandwich.addIngredient(meat);
-       sandwich.addIngredient(extraMeat);
+       sandwich.addIngredient(meat2);
        sandwich.addIngredient(cheese);
        sandwich.addIngredient(lettuce);
        sandwich.addIngredient(tomato);
