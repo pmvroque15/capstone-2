@@ -8,14 +8,12 @@ import java.util.HashSet;
 public class Sandwich implements Product {
     private SandwichSize sandwichSize;
     private BreadType breadType;
-    private double price;
     private boolean isToasted;
     private HashSet<Ingredient> ingredients = new HashSet<>();
 
     public Sandwich(SandwichSize sandwichSize, BreadType breadType, boolean isToasted) {
         this.sandwichSize = sandwichSize;
         this.breadType = breadType;
-        this.price = sandwichSize.getPrice();
         this.isToasted = isToasted;
     }
 
@@ -25,10 +23,6 @@ public class Sandwich implements Product {
 
     public BreadType getBreadType() {
         return breadType;
-    }
-
-    public double getPrice() {
-        return price;
     }
 
     public boolean getIsToasted() {
@@ -41,6 +35,10 @@ public class Sandwich implements Product {
 
     public void removeIngredient(Ingredient ingredient) {
         ingredients.remove(ingredient);
+    }
+
+    public HashSet<Ingredient> getIngredients() {
+        return ingredients;
     }
 
     @Override

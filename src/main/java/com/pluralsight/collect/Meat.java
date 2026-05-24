@@ -8,6 +8,11 @@ public class Meat extends Ingredient {
     }
 
     @Override
+    public String getName() {
+        return super.getName();
+    }
+
+    @Override
     public double getPrice(SandwichSize size) {
         if (isExtra()) {
             switch (size) {
