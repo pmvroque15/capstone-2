@@ -20,6 +20,6 @@ public class Sauce extends Ingredient{
 
     @Override
     public String toString() {
-        return String.format("Sauce: %s", getName());
+        return String.format("Sauce: %s%n", getName());
     }
 }

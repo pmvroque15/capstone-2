@@ -8,6 +8,11 @@ public class Cheese extends Ingredient {
     }
 
     @Override
+    public String getName() {
+        return super.getName();
+    }
+
+    @Override
     public double getPrice(SandwichSize size) {
 
         if (isExtra()) {
@@ -32,4 +37,11 @@ public class Cheese extends Ingredient {
 
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Cheese: %s%n", getName());
+    }
+
+
 }

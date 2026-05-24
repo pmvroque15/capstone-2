@@ -36,7 +36,7 @@ public class Meat extends Ingredient {
         if(!isExtra()) {
             return getName();
         }
-       return String.format("Extra: %s", getName());
+       return String.format("Extra: %s%n", getName());
     }
 }
 
