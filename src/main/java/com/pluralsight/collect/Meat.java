@@ -30,5 +30,13 @@ public class Meat extends Ingredient {
         }
         return 0;
     }
+
+    @Override
+    public String toString() {
+        if(!isExtra()) {
+            return getName();
+        }
+       return String.format("Extra: %s", getName());
+    }
 }
 
