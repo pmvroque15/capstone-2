@@ -10,6 +10,7 @@ public class DeliciousMain {
        Ingredient meat = new Meat("Steak", false);
        Ingredient extraMeat = new Meat("Steak", true);
        Ingredient cheese = new Cheese("Provolone", false);
+       Ingredient cheese2 = new Cheese("Provolone", false);
        Ingredient lettuce = new RegularTopping("lettuce");
        Ingredient tomato = new RegularTopping("tomato");
        Chips chips = new Chips("Cheetos");
@@ -19,6 +20,7 @@ public class DeliciousMain {
        sandwich.addIngredient(cheese);
        sandwich.addIngredient(lettuce);
        sandwich.addIngredient(tomato);
+       sandwich.addIngredient(cheese2);
 
 
        Order order = new Order();
@@ -32,6 +34,7 @@ public class DeliciousMain {
         System.out.println(chips);
         System.out.println(drink);
         System.out.println("TOTAL: " + order.calculateTotal());
+
 
     }
 }

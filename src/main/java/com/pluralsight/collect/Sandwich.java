@@ -77,10 +77,11 @@ public class Sandwich implements Product {
             }
 
             sb.append(" - ").append(ingredient.getName()).append("\n");
-
         }
         sb.append(String.format("%nSubtotal: $%.2f", calculatePrice()));
         //returns to the toString of sb object!
         return sb.toString();
     }
+
+
 }

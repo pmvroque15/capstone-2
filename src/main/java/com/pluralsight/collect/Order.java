@@ -45,6 +45,9 @@ public class Order {
     public double calculateTotal() {
         double total = 0;
         //adding isValid(), to make sure that the customer will buy chips or drink
+        if(!isValid()) {
+            System.err.println("You must buy a chips or a drink to continue the purchase.");
+        }
         for(Product s: sandwiches) {
             total += s.calculatePrice();
         }
