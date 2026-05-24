@@ -1,11 +1,37 @@
 package com.pluralsight.collect;
 
+import com.pluralsight.enums.BreadType;
+import com.pluralsight.enums.DrinkSize;
+import com.pluralsight.enums.SandwichSize;
+
 public class DeliciousMain {
     public static void main(String[] args) {
-       UserInterface ui = new UserInterface();
+       Sandwich sandwich = new Sandwich(SandwichSize.TWELVE_INCH, BreadType.WHITE, true);
+       Ingredient meat = new Meat("Steak", false);
+       Ingredient extraMeat = new Meat("Steak", true);
+       Ingredient cheese = new Cheese("Provolone", false);
+       Ingredient lettuce = new RegularTopping("lettuce");
+       Ingredient tomato = new RegularTopping("tomato");
+       Chips chips = new Chips("Cheetos");
+       Drink drink = new Drink(DrinkSize.MEDIUM, "Diet Coke");
+       sandwich.addIngredient(meat);
+       sandwich.addIngredient(extraMeat);
+       sandwich.addIngredient(cheese);
+       sandwich.addIngredient(lettuce);
+       sandwich.addIngredient(tomato);
 
-       ui.createASandwichOrderRequest();
 
+       Order order = new Order();
+
+       order.addSandwich(sandwich);
+       order.addChips(chips);
+       order.addDrink(drink);
+
+        System.out.println("ORDER SUMMARY:");
+        System.out.println(sandwich);
+        System.out.println(chips.getChipType() + " " + chips.calculatePrice());
+        System.out.println(drink);
+        System.out.println("TOTAL: " + order.calculateTotal());
 
     }
 }

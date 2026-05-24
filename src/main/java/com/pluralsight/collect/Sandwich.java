@@ -55,15 +55,14 @@ public class Sandwich implements Product {
 
     //Using StringBuilder to append customizations of the sandwich for order summary.
     //Thought of just looping through the ingredients Hashset but every loop, it creates a brand new object vs. StringBuilder
-    //it just builds one whole bigString object in memory. Saves time and memory.
-
-
+    //it just builds one whole bigString object in memory. Saves time and memory
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(sandwichSize).append("on").append(breadType);
+        sb.append(sandwichSize).append(" on ").append(breadType);
+
         //if it's not toasted, just leave it empty and move forward.
-        if(!isToasted) {
+        if (!isToasted) {
             sb.append("");
         }
 
@@ -71,21 +70,17 @@ public class Sandwich implements Product {
         sb.append("\n");
 
         //looping through hashset of ingredients and appending it to the sb object.
-        for(Ingredient ingredient: ingredients) {
-            sb.append(" - ").append(ingredient.getName());
-
+        for (Ingredient ingredient : ingredients) {
             //if extra ingredient, then append extra after the ingredient
-            if(ingredient.isExtra()) {
-                sb.append(" (extra)");
-                sb.append("\n");
+            if (ingredient.isExtra()) {
+                sb.append(" - ").append(ingredient.getName()).append(" (extra)\n");
             }
 
-            sb.append(String.format(" Subtotal: $%.2f", calculatePrice()));
+            sb.append(" - ").append(ingredient.getName()).append("\n");
 
-            //returns to the toString of sb object!
-            return sb.toString();
         }
-
-
+        sb.append(String.format("%nSubtotal: $%.2f", calculatePrice()));
+        //returns to the toString of sb object!
+        return sb.toString();
     }
 }
