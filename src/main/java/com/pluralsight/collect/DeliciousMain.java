@@ -5,13 +5,16 @@ import java.sql.SQLOutput;
 public class DeliciousMain {
     public static void main(String[] args) {
 //       Sandwich sandwich = new Sandwich(SandwichSize.TWELVE_INCH, BreadType.WHOLE, false);
-       Sandwich meat2 = new Meat("Steak", SandwichSize.FOUR_INCH,true);
-        System.out.println(meat2);
-       Sandwich cheese = new Cheese("Provolone", SandwichSize.FOUR_INCH,true);
-        System.out.println(cheese);
+//       Sandwich meat2 = new Meat("Steak", SandwichSize.FOUR_INCH,true);
+//        System.out.println(meat2);
+//       Sandwich cheese = new Cheese("Provolone", SandwichSize.FOUR_INCH,true);
+//        System.out.println(cheese);
 //       Sandwich cheese2 = new Cheese("Provolone", false);
 //       Sandwich lettuce = new RegularTopping("lettuce");
 //       Sandwich tomato = new RegularTopping("tomato");
+//        System.out.println(tomato);
+        Sandwich sauce = new Sauce("Mayo");
+        System.out.println(sauce);
 //       Chips chips = new Chips("Cheetos");
 //       Drink drink = new Drink(DrinkSize.MEDIUM);
 //       sandwich.addIngredient(meat2);

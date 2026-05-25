@@ -18,16 +18,17 @@ public class Meat extends Sandwich {
         return this.isExtra;
     }
 
-    public double getPrice(SandwichSize size) {
+    @Override
+    public double getPrice() {
         if (isExtra) {
-            return switch (size) {
+            return switch (super.getSize()) {
                 case FOUR_INCH -> 1.50;
                 case EIGHT_INCH -> 3.00;
                 case TWELVE_INCH -> 4.50;
             };
         }
 
-        return switch (size) {
+        return switch (super.getSize()) {
             case FOUR_INCH -> 1.00;
             case EIGHT_INCH -> 2.00;
             case TWELVE_INCH -> 3.00;
@@ -37,9 +38,9 @@ public class Meat extends Sandwich {
     @Override
     public String toString() {
         if (!isExtra) {
-            return String.format("MEAT: %s%nPRICE: $%.2f%n", getName(), getPrice(this.getSize()));
+            return String.format("MEAT: %s%nPRICE: $%.2f%n", getName(), getPrice());
         }
-        return String.format("MEAT: %s(extra)%nPRICE: $%.2f%n", getName(), getPrice(this.getSize()));
+        return String.format("MEAT: %s(extra)%nPRICE: $%.2f%n", getName(), getPrice());
     }
 }
 

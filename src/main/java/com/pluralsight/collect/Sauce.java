@@ -1,19 +1,23 @@
-//package com.pluralsight.collect;
-//
-//public class Sauce extends Sandwich {
-//
-//    public Sauce(String name) {
-//        //Always free and it comes with a sauce
-//        super(name, false);
-//    }
-//
-//    @Override
-//    public String getName() {
-//        return super.getName();
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return String.format("Sauce: %s%n", getName());
-//    }
-//}
+package com.pluralsight.collect;
+
+public class Sauce extends Sandwich {
+    private final String name;
+
+    public Sauce(String name) {
+        super();
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public double getPrice() {
+        return 0;
+    }
+    @Override
+    public String toString() {
+        return String.format("SAUCE: %s%nPRICE: $%.2f%n", getName(), getPrice());
+    }
+}

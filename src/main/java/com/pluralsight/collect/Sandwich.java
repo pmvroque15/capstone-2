@@ -3,25 +3,24 @@ package com.pluralsight.collect;
 import java.util.HashSet;
 import java.util.Objects;
 
-public class Sandwich implements Product {
-    private boolean isExtra;
+public abstract class Sandwich implements Product {
     private SandwichSize sandwichSize;
     private BreadType breadType;
-    private boolean isToasted;
     private final HashSet<Sandwich> ingredients = new HashSet<>();
+
+    public Sandwich() {
+
+    }
 
     public Sandwich(SandwichSize sandwichSize, BreadType breadType, boolean isToasted) {
         this.sandwichSize = sandwichSize;
         this.breadType = breadType;
-        this.isToasted = isToasted;
     }
 
     public Sandwich(SandwichSize sandwichSize) {
         this.sandwichSize = sandwichSize;
     }
-    public double getPrice(SandwichSize size) {
-        return 0;
-    }
+    abstract double getPrice();
 
     public SandwichSize getSize() {
         return sandwichSize;
@@ -48,7 +47,7 @@ public class Sandwich implements Product {
         double total = sandwichSize.getPrice();
 
         for (Sandwich s : ingredients) {
-            total += s.getPrice(sandwichSize);
+            total += s.getPrice();
 
         }
 

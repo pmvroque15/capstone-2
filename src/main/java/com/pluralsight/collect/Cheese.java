@@ -18,17 +18,18 @@ public class Cheese extends Sandwich {
         return this.isExtra;
     }
 
-    public double getPrice(SandwichSize size) {
+    @Override
+    public double getPrice() {
 
         if (this.isExtra) {
-            return switch (size) {
+            return switch (super.getSize()) {
                 case FOUR_INCH -> 1.05;
                 case EIGHT_INCH -> 2.10;
                 case TWELVE_INCH -> 3.15;
             };
         }
 
-        return switch (size) {
+        return switch (super.getSize()) {
             case FOUR_INCH -> 0.75;
             case EIGHT_INCH -> 1.50;
             case TWELVE_INCH -> 2.25;
@@ -39,9 +40,9 @@ public class Cheese extends Sandwich {
     @Override
     public String toString() {
         if (!isExtra) {
-            return String.format("CHEESE: %s%nPRICE: $%.2f%n", getName(), getPrice(this.getSize()));
+            return String.format("CHEESE: %s%nPRICE: $%.2f%n", getName(), getPrice());
         }
-        return String.format("CHEESE: %s(extra)%nPRICE: $%.2f%n", getName(), getPrice(this.getSize()));
+        return String.format("CHEESE: %s(extra)%nPRICE: $%.2f%n", getName(), getPrice());
     }
 
 
