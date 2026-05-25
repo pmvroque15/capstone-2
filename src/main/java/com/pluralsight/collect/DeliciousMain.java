@@ -22,7 +22,7 @@ public class DeliciousMain {
 
       UserInterface ui = new UserInterface();
 
-      ui.createASandwich();
+      ui.chooseRegularToppings();
 
 
 

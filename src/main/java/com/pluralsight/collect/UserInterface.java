@@ -75,7 +75,7 @@ public class UserInterface {
         sandwich.addIngredient(cheese);
 
         ArrayList<Ingredient> regularToppings = chooseRegularToppings();
-        for(Ingredient i: regularToppings) {
+        for (Ingredient i : regularToppings) {
             sandwich.addIngredient(i);
         }
 
@@ -116,6 +116,20 @@ public class UserInterface {
         while (running) {
             String topping = chooseFromMenu("Pick a topping: ", toppings);
 
+            if (topping.isEmpty()) {
+                return null;
+            }
+            boolean duplicate = false;
+
+            for (Ingredient t : toppingsList) {
+                if (topping.equalsIgnoreCase(t.getName())) {
+                    System.err.printf("Yo, what's up with the %s? Try again.\n", t.getName());
+
+                    duplicate = true;
+                    break;
+                }
+            }
+
             toppingsList.add(new RegularTopping(topping));
 
             System.out.println("Do you want to add another topping? y/n");
@@ -125,8 +139,8 @@ public class UserInterface {
             if (!input.equalsIgnoreCase("y")) {
                 running = false;
             }
-        }
 
+        }
         return toppingsList;
     }
 
