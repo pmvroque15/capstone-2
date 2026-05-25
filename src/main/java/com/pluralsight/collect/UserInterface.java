@@ -41,7 +41,7 @@ public class UserInterface {
             int input = Integer.parseInt(scanner.nextLine());
             switch (input) {
                 case 1:
-                    createASandwichOrderRequest();
+                    createASandwich();
                     break;
                 case 2:
                     createADrinkOrderRequest();
@@ -61,39 +61,33 @@ public class UserInterface {
         } while (running);
     }
 
-    public void createASandwichOrderRequest() {
+    public Sandwich createASandwich() {
         //todo: clean this, make each prompt a new method
+        SandwichSize sandwichSize = chooseSandwichSize();
+        BreadType breadType = chooseBreadType();
+        boolean isToasted = isToasted();
+        Ingredient meat = chooseAMeat();
 
+
+        System.out.println("Cheese: ");
+        System.out.println("Other toppings: ");
+        System.out.println("Select sauces: ");
+
+
+        //todo make a defensive code make sure arguments are NOT null
+        return new Sandwich(sandwichSize, breadType, isToasted);
+
+    }
+
+    public Boolean isToasted() {
+        System.out.println("Would you like the sandwich toasted? (Yes or No)");
+        String toasted = scanner.nextLine();
+
+        return toasted.equalsIgnoreCase("Yes");
+    }
+
+    public SandwichSize chooseSandwichSize() {
         boolean running = true;
-        BreadType breadType = null;
-        //todo clean the default err message it should show BEFORE the prompt if the user typed invalid input
-        do {
-            System.out.println("Select your bread: (Whole, Wheat, Wrap, or Rye) ");
-            String bread = scanner.nextLine().toUpperCase();
-            switch (bread) {
-                case "WHITE":
-                    breadType = BreadType.WHITE;
-                    running = false;
-                    break;
-                case "RYE":
-                    breadType = BreadType.RYE;
-                    running = false;
-                    break;
-                case "WHEAT":
-                    breadType = BreadType.WHEAT;
-                    running = false;
-                    break;
-                case "WRAP":
-                    breadType = BreadType.WRAP;
-                    running = false;
-                    break;
-                default:
-                    System.err.println("Invalid input. Please choose and type the available bread type: Whole, White, Wrap, or Rye.");
-                    break;
-
-            }
-        } while (running);
-
 
         SandwichSize sandwichSize = null;
         do {
@@ -119,20 +113,66 @@ public class UserInterface {
             }
         } while (running);
 
-        System.out.println("Toppings: ");
+        return sandwichSize;
+    }
 
-        System.out.println("Meat: ");
+    public BreadType chooseBreadType() {
 
-        System.out.println("Cheese: ");
-        System.out.println("Other toppings: ");
-        System.out.println("Select sauces: ");
-        System.out.println("Would you like the sandwich toasted? (Yes or No)");
-        String toasted = scanner.nextLine();
-        boolean isToasted = toasted.equalsIgnoreCase("Yes");
+        boolean running = true;
+        BreadType breadType = null;
+        //todo clean the default err message it should show BEFORE the prompt if the user typed invalid input
+        do {
+            System.out.println("Select your bread: (Whole, Wheat, Wrap, or Rye) ");
+            String bread = scanner.nextLine().toUpperCase();
+            switch (bread) {
+                case "WHITE":
+                    breadType = BreadType.WHITE;
+                    running = false;
+                    break;
+                case "RYE":
+                    breadType = BreadType.RYE;
+                    running = false;
+                    break;
+                case "WHOLE":
+                    breadType = BreadType.WHEAT;
+                    running = false;
+                    break;
+                case "WRAP":
+                    breadType = BreadType.WRAP;
+                    running = false;
+                    break;
+                default:
+                    System.err.println("Invalid input. Please choose and type the available bread type: Whole, White, Wrap, or Rye.");
+                    break;
 
-        //todo make a defensive code make sure arguments are NOT null
-        Sandwich sandwich = new Sandwich(sandwichSize, breadType, isToasted);
+            }
+        } while (running);
 
+        return breadType;
+    }
+
+    public Ingredient chooseAMeat() {
+        boolean running = true;
+        String meat = null;
+
+            String[] meats = {"Steak", "Ham", "Salami", "Roast Beef", "Chicken", "Bacon"};
+            System.out.println("Choose your protein: ");
+            for (String m: meats) {
+                System.out.println(m);
+            }
+            String input = scanner.nextLine();
+
+            for (String m: meats) {
+                if(input.equalsIgnoreCase(m)) {
+                    meat = m;
+                }
+            }
+
+            System.out.printf("Do you want extra of %s? y/n", meat);
+            String anotherInput = scanner.nextLine();
+            boolean isExtra = anotherInput.equalsIgnoreCase("y");
+
+        return new Meat(meat, isExtra);
     }
 
     private void createAChipsOrderRequest() {
