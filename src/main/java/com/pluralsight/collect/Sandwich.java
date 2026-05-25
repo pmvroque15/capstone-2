@@ -1,20 +1,37 @@
 package com.pluralsight.collect;
 
-import com.pluralsight.enums.BreadType;
-import com.pluralsight.enums.SandwichSize;
-
 import java.util.HashSet;
+import java.util.Objects;
 
 public class Sandwich implements Product {
+    private String name;
+    private boolean isExtra;
     private SandwichSize sandwichSize;
     private BreadType breadType;
     private boolean isToasted;
-    private HashSet<Ingredient> ingredients = new HashSet<>();
+    private HashSet<Sandwich> ingredients = new HashSet<>();
 
     public Sandwich(SandwichSize sandwichSize, BreadType breadType, boolean isToasted) {
         this.sandwichSize = sandwichSize;
         this.breadType = breadType;
         this.isToasted = isToasted;
+    }
+
+    public Sandwich(String name, boolean isExtra) {
+        this.name = name;
+        this.isExtra = isExtra;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isExtra() {
+        return isExtra;
+    }
+
+    public double getPrice(SandwichSize size) {
+        return 0;
     }
 
     public SandwichSize getSize() {
@@ -25,19 +42,15 @@ public class Sandwich implements Product {
         return breadType;
     }
 
-    public boolean getIsToasted() {
-        return isToasted;
-    }
-
-    public void addIngredient(Ingredient ingredient) {
+    public void addIngredient(Sandwich ingredient) {
         ingredients.add(ingredient);
     }
 
-    public void removeIngredient(Ingredient ingredient) {
+    public void removeIngredient(Sandwich ingredient) {
         ingredients.remove(ingredient);
     }
 
-    public HashSet<Ingredient> getIngredients() {
+    public HashSet<Sandwich> getIngredients() {
         return ingredients;
     }
 
@@ -45,8 +58,8 @@ public class Sandwich implements Product {
     public double calculatePrice() {
         double total = sandwichSize.getPrice();
 
-        for (Ingredient ingredient : ingredients) {
-            total += ingredient.getPrice(sandwichSize);
+        for (Sandwich s : ingredients) {
+            total += s.getPrice(sandwichSize);
 
         }
 
@@ -69,7 +82,10 @@ public class Sandwich implements Product {
         sb.append("\n");
 
         //looping through hashset of ingredients and appending it to the sb object.
-        for (Ingredient ingredient : ingredients) {
+        for (Sandwich ingredient : ingredients) {
+            if(ingredient == null) {
+                sb.append(" ");
+            }
             //if extra ingredient, then append extra after the ingredient
             if (ingredient.isExtra()) {
                 sb.append("           ").append(" - ")
@@ -87,6 +103,28 @@ public class Sandwich implements Product {
 
         //returns to the toString of sb object!
         return sb.toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, isExtra);
+    }
+
+    @Override
+    // reference: https://www.geeksforgeeks.org/java/override-equalsobject-hashcode-method/
+    public boolean equals(Object obj) {
+        //"this" refers to the current object inside the equals parameters
+        if (this == obj) {
+            return true;
+        }
+        //defensive coding: making sure the obj is not null and classes are the same.
+        if(obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+        //type casting to Ingredient class to compare the fields directly to each other
+        Sandwich that = (Sandwich) obj;
+
+        return (this.isExtra == that.isExtra) && (Objects.equals(name, that.name));
     }
 
 

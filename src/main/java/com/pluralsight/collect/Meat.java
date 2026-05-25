@@ -1,8 +1,6 @@
 package com.pluralsight.collect;
 
-import com.pluralsight.enums.SandwichSize;
-
-public class Meat extends Ingredient {
+public class Meat extends Sandwich {
     public Meat(String name, boolean isExtra) {
         super(name, isExtra);
     }
@@ -12,8 +10,7 @@ public class Meat extends Ingredient {
         return super.getName();
     }
 
-    @Override
-    public double getPrice(SandwichSize size) {
+    public double getPrice(RegularTopping.SandwichSize size) {
         if (isExtra()) {
             switch (size) {
                 case FOUR_INCH:

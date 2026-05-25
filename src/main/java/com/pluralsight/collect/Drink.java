@@ -1,7 +1,5 @@
 package com.pluralsight.collect;
 
-import com.pluralsight.enums.DrinkSize;
-
 public class Drink implements Product {
     private final DrinkSize drinkSize;
     private double price = 0;

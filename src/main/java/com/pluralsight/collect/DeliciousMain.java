@@ -1,37 +1,35 @@
 package com.pluralsight.collect;
 
-import com.pluralsight.enums.BreadType;
-import com.pluralsight.enums.DrinkSize;
-import com.pluralsight.enums.SandwichSize;
-
 public class DeliciousMain {
     public static void main(String[] args) {
-//       Sandwich sandwich = new Sandwich(SandwichSize.TWELVE_INCH, BreadType.WHOLE, false);
-//       Ingredient meat2 = new Meat("Steak", true);
-//       Ingredient cheese = new Cheese("Provolone", false);
-//       Ingredient cheese2 = new Cheese("Provolone", false);
-//       Ingredient lettuce = new RegularTopping("lettuce");
-//       Ingredient tomato = new RegularTopping("tomato");
-//       Chips chips = new Chips("Cheetos");
-//       Drink drink = new Drink(DrinkSize.MEDIUM, "Diet Coke");
-//       sandwich.addIngredient(meat2);
-//       sandwich.addIngredient(cheese);
-//       sandwich.addIngredient(lettuce);
-//       sandwich.addIngredient(tomato);
-//       sandwich.addIngredient(cheese2);
+       Sandwich sandwich = new Sandwich(SandwichSize.TWELVE_INCH, BreadType.WHOLE, false);
+       Sandwich meat2 = new Meat("Steak", true);
+       Sandwich cheese = new Cheese("Provolone", false);
+       Sandwich cheese2 = new Cheese("Provolone", false);
+       Sandwich lettuce = new RegularTopping("lettuce");
+       Sandwich tomato = new RegularTopping("tomato");
+       Chips chips = new Chips("Cheetos");
+       Drink drink = new Drink(DrinkSize.MEDIUM);
+       sandwich.addIngredient(meat2);
+       sandwich.addIngredient(cheese);
+       sandwich.addIngredient(lettuce);
+       sandwich.addIngredient(tomato);
+       sandwich.addIngredient(cheese2);
 
-      UserInterface ui = new UserInterface();
-
-      ui.orderScreen();
-
-
+//      UserInterface ui = new UserInterface();
+//
+//      ui.display();
 
 
-//        System.out.println("ORDER SUMMARY:");
-//        System.out.println(sandwich);
-//        System.out.println(chips);
-//        System.out.println(drink);
-//        System.out.println("TOTAL: " + order.calculateTotal());
+
+        Order order = new Order();
+
+
+        System.out.println("ORDER SUMMARY:");
+        System.out.println(sandwich);
+        System.out.println(chips);
+        System.out.println(drink);
+        System.out.println("TOTAL: " + order.calculateTotal());
 
 
 

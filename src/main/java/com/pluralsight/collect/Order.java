@@ -1,7 +1,5 @@
 package com.pluralsight.collect;
 
-import com.pluralsight.enums.SandwichSize;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 

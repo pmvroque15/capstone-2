@@ -1,8 +1,6 @@
 package com.pluralsight.collect;
 
-import com.pluralsight.enums.SandwichSize;
-
-public class Sauce extends Ingredient {
+public class Sauce extends Sandwich {
 
     public Sauce(String name) {
         //Always free and it comes with a sauce
@@ -12,11 +10,6 @@ public class Sauce extends Ingredient {
     @Override
     public String getName() {
         return super.getName();
-    }
-
-    @Override
-    public double getPrice(SandwichSize size) {
-        return 0;
     }
 
     @Override
