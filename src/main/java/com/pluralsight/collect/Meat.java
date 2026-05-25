@@ -1,5 +1,7 @@
 package com.pluralsight.collect;
 
+import java.util.Objects;
+
 public class Meat extends Sandwich {
     private final boolean isExtra;
     private final String name;
@@ -41,6 +43,28 @@ public class Meat extends Sandwich {
             return String.format("MEAT: %s%nPRICE: $%.2f%n", getName(), getPrice());
         }
         return String.format("MEAT: %s(extra)%nPRICE: $%.2f%n", getName(), getPrice());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, isExtra);
+    }
+
+    @Override
+    // reference: https://www.geeksforgeeks.org/java/override-equalsobject-hashcode-method/
+    public boolean equals(Object obj) {
+        //"this" refers to the current object inside the equals parameters
+        if (this == obj) {
+            return true;
+        }
+        //defensive coding: making sure the obj is not null and classes are the same.
+        if(obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+        //type casting to Ingredient class to compare the fields directly to each other
+        Meat that = (Meat) obj;
+
+        return (this.isExtra == that.isExtra) && (Objects.equals(name, that.name));
     }
 }
 
