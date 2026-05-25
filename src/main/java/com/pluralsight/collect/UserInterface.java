@@ -1,14 +1,15 @@
 package com.pluralsight.collect;
 
 import com.pluralsight.enums.BreadType;
+import com.pluralsight.enums.DrinkSize;
 import com.pluralsight.enums.SandwichSize;
 
 import java.util.ArrayList;
-import java.util.Formattable;
 import java.util.Scanner;
 
 public class UserInterface {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
+    private Order order = new Order();
 
     public void display() {
         homeScreen();
@@ -35,7 +36,7 @@ public class UserInterface {
         } while (running);
     }
 
-    private void orderScreen() {
+    public void orderScreen() {
 
         boolean running = true;
         do {
@@ -44,13 +45,19 @@ public class UserInterface {
             int input = Integer.parseInt(scanner.nextLine());
             switch (input) {
                 case 1:
-                    createASandwich();
+                    Sandwich sandwich = createASandwichOrder();
+                    order.addSandwich(sandwich);
+                    System.out.println("TEST: Sandwich!");
                     break;
                 case 2:
-                    createADrinkOrderRequest();
+                    Drink drink = createADrinkOrder();
+                    order.addDrink(drink);
+                    System.out.println("TEST: Drink!");
                     break;
                 case 3:
-                    createAChipsOrderRequest();
+                    Chips chips = createAChipsOrder();
+                    order.addChips(chips);
+                    System.out.println("TEST: chips!");
                     break;
                 case 4:
                     checkoutRequest();
@@ -64,7 +71,7 @@ public class UserInterface {
         } while (running);
     }
 
-    public Sandwich createASandwich() {
+    public Sandwich createASandwichOrder() {
         //todo: Ask David if it's better to make a method for this. CreateASandwich class?
         Sandwich sandwich = new Sandwich(chooseSandwichSize(), chooseBreadType(), isToasted());
 
@@ -248,7 +255,13 @@ public class UserInterface {
                 System.out.println("- " + option);
             }
 
+            System.out.println("(Please Enter to skip)");
+
             String input = scanner.nextLine();
+
+            if(input.isEmpty()) {
+                return "";
+            }
 
             for (String option : options) {
                 if (input.equalsIgnoreCase(option)) {
@@ -260,13 +273,31 @@ public class UserInterface {
         }
     }
 
-    private void createAChipsOrderRequest() {
-        System.out.println("TEST chips order");
+    public Chips createAChipsOrder() {
+        System.out.println("What chips would you like? (Enter to skip)");
+        String input = scanner.nextLine();
 
+        if(input.isBlank()) {
+            return null;
+        }
+
+        return new Chips(input);
     }
 
-    private void createADrinkOrderRequest() {
-        System.out.println("TEST drink order");
+    public Drink createADrinkOrder() {
+        //What if the user wants more than one drink?
+        System.out.println("What drink would you like? (Enter to skip)");
+        String input = scanner.nextLine();
+
+        if(input.isBlank()) {
+            return null;
+        }
+
+        System.out.println("What size? ");
+        DrinkSize size = DrinkSize.valueOf(scanner.nextLine().toUpperCase());
+
+        return new Drink(size, input);
+
     }
 
     public void checkoutScreen() {
