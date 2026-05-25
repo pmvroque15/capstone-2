@@ -69,7 +69,7 @@ public class UserInterface {
         Ingredient meat = chooseAMeat();
         sandwich.addIngredient(meat);
 
-        System.out.println("Cheese: ");
+        Ingredient cheese = chooseACheese();
         System.out.println("Other toppings: ");
         System.out.println("Select sauces: ");
 
@@ -77,6 +77,16 @@ public class UserInterface {
         //todo make a defensive code make sure arguments are NOT null
         return sandwich;
 
+    }
+
+    public Ingredient chooseACheese() {
+        String[] kindOfCheese = {"American", "Provolone", "Cheddar", "Swiss"};
+        String cheese = chooseFromMenu("Pick your cheese", kindOfCheese);
+
+        System.out.printf("Do you want extra of %s? y/n", cheese);
+        boolean isExtra = scanner.nextLine().equalsIgnoreCase("y");
+
+        return new Cheese(cheese, isExtra);
     }
 
     public Boolean isToasted() {
