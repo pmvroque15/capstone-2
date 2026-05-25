@@ -137,8 +137,9 @@ public class UserInterface {
                 }
             }
 
-            toppingsList.add(new RegularTopping(topping));
-
+            if(!duplicate) {
+                toppingsList.add(new RegularTopping(topping));
+            }
             System.out.println("Do you want to add another topping? y/n");
 
             String input = scanner.nextLine();
@@ -208,7 +209,7 @@ public class UserInterface {
             String bread = scanner.nextLine().toUpperCase();
             switch (bread) {
                 case "WHEAT":
-                    breadType = BreadType.WHITE;
+                    breadType = BreadType.WHEAT;
                     running = false;
                     break;
                 case "RYE":
@@ -216,7 +217,7 @@ public class UserInterface {
                     running = false;
                     break;
                 case "WHOLE":
-                    breadType = BreadType.WHEAT;
+                    breadType = BreadType.WHOLE;
                     running = false;
                     break;
                 case "WRAP":

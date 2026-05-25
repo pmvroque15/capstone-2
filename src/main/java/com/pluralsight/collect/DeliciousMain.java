@@ -6,7 +6,7 @@ import com.pluralsight.enums.SandwichSize;
 
 public class DeliciousMain {
     public static void main(String[] args) {
-//       Sandwich sandwich = new Sandwich(SandwichSize.TWELVE_INCH, BreadType.WHITE, false);
+//       Sandwich sandwich = new Sandwich(SandwichSize.TWELVE_INCH, BreadType.WHOLE, false);
 //       Ingredient meat2 = new Meat("Steak", true);
 //       Ingredient cheese = new Cheese("Provolone", false);
 //       Ingredient cheese2 = new Cheese("Provolone", false);

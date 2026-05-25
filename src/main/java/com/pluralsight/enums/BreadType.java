@@ -1,7 +1,7 @@
 package com.pluralsight.enums;
 
 public enum BreadType {
-    WHITE,
+    WHOLE,
     WHEAT,
     RYE,
     WRAP
