@@ -78,12 +78,22 @@ public class UserInterface {
         for(Ingredient i: regularToppings) {
             sandwich.addIngredient(i);
         }
-        System.out.println("Select sauces: ");
+
+        Ingredient sauce = chooseASauce();
+        sandwich.addIngredient(sauce);
 
 
         //todo make a defensive code make sure arguments are NOT null
         return sandwich;
 
+    }
+
+    public Ingredient chooseASauce() {
+        String[] sauces = {"Mayo", "Mustard", "Ketchup", "Ranch", "Thousand Islands", "Vinaigrette"};
+
+        String sauce = chooseFromMenu("Choose your sauce: ", sauces);
+
+        return new Sauce(sauce);
     }
 
     public ArrayList<Ingredient> chooseRegularToppings() {
