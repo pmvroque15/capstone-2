@@ -82,10 +82,20 @@ public class UserInterface {
         Ingredient sauce = chooseASauce();
         sandwich.addIngredient(sauce);
 
+        Ingredient side = chooseASide();
+        sandwich.addIngredient(side);
 
         //todo make a defensive code make sure arguments are NOT null
         return sandwich;
 
+    }
+
+    public Ingredient chooseASide() {
+        String[] sides = {"Au jus", "Sauce"};
+
+        String side = chooseFromMenu("Choose a side: ", sides);
+
+        return new Side(side);
     }
 
     public Ingredient chooseASauce() {
