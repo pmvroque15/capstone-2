@@ -3,6 +3,8 @@ package com.pluralsight.collect;
 import com.pluralsight.enums.BreadType;
 import com.pluralsight.enums.SandwichSize;
 
+import java.util.ArrayList;
+import java.util.Formattable;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -63,20 +65,49 @@ public class UserInterface {
     }
 
     public Sandwich createASandwich() {
-        //todo: clean this, make each prompt a new method
+        //todo: Ask David if it's better to make a method for this. CreateASandwich class?
         Sandwich sandwich = new Sandwich(chooseSandwichSize(), chooseBreadType(), isToasted());
 
         Ingredient meat = chooseAMeat();
         sandwich.addIngredient(meat);
 
         Ingredient cheese = chooseACheese();
-        System.out.println("Other toppings: ");
+        sandwich.addIngredient(cheese);
+
+        ArrayList<Ingredient> regularToppings = chooseRegularToppings();
+        for(Ingredient i: regularToppings) {
+            sandwich.addIngredient(i);
+        }
         System.out.println("Select sauces: ");
 
 
         //todo make a defensive code make sure arguments are NOT null
         return sandwich;
 
+    }
+
+    public ArrayList<Ingredient> chooseRegularToppings() {
+        ArrayList<Ingredient> toppingsList = new ArrayList<>();
+        String[] toppings = {"Lettuce", "Peppers", "Onions",
+                "Tomatoes", "Jalapeños", "Cucumbers",
+                "Pickles", "Guacamole", "Mushrooms"};
+
+        boolean running = true;
+        while (running) {
+            String topping = chooseFromMenu("Pick a topping: ", toppings);
+
+            toppingsList.add(new RegularTopping(topping));
+
+            System.out.println("Do you want to add another topping? y/n");
+
+            String input = scanner.nextLine();
+
+            if (!input.equalsIgnoreCase("y")) {
+                running = false;
+            }
+        }
+
+        return toppingsList;
     }
 
     public Ingredient chooseACheese() {
