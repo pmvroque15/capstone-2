@@ -19,6 +19,6 @@ public class Chips implements Product{
 
     @Override
     public String toString() {
-        return String.format("Chips (%s) $1.50",  getChipType());
+        return String.format("\t   Chips (%s) $1.50",  getChipType());
     }
 }

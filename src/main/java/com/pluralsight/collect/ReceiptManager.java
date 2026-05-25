@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ReceiptManager {
     private Order order;
-    private static final String DIRECTORY_PATH = "src/main/receipts/";
+    private static final String DIRECTORY_PATH = "src/main/resources/receipts/";
     private static final String EXTENSION_FILE = ".txt";
 
     public ReceiptManager(Order order) {
@@ -24,9 +24,9 @@ public class ReceiptManager {
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename));
 
-            bufferedWriter.write("DELICIOUS SANDWICHES\n");
-            bufferedWriter.write("ORDER RECEIPT \n");
-            bufferedWriter.write("-------------------------\n");
+            bufferedWriter.write("================ ORDER RECEIPT ===============\n");
+            bufferedWriter.write("             DELICIOUS SANDWICHES \n");
+            bufferedWriter.write("==============================================\n");
             bufferedWriter.write(order.toString());
 
             bufferedWriter.close();

@@ -17,11 +17,11 @@ public class Meat extends Ingredient {
         if (isExtra()) {
             switch (size) {
                 case FOUR_INCH:
-                    return 0.50;
-                case EIGHT_INCH:
-                    return 1.00;
-                case TWELVE_INCH:
                     return 1.50;
+                case EIGHT_INCH:
+                    return 3.00;
+                case TWELVE_INCH:
+                    return 4.50;
             }
         }
 

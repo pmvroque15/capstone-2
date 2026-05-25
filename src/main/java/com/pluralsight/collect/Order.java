@@ -84,25 +84,31 @@ public class Order {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append("DELICIOUS SANDWICHES\n");
-        sb.append("ORDER RECEIPT\n\n");
-
-        sb.append("-------- SANDWICHES --------\n");
+        sb.append("     -------- SANDWICHES --------\n");
+        double subtotal = 0;
         for(Product s : sandwiches) {
-            sb.append(s.toString()).append("\n\n");
+            sb.append(s.toString()).append("\n");
+            subtotal += s.calculatePrice();
         }
 
-        sb.append("-------- DRINKS --------\n");
-        for(Product d : drinks) {
-            sb.append(d.toString()).append("\n\n");
+        sb.append("SUBTOTAL:  $").append(subtotal).append("\n");
+
+
+        if (!drinks.isEmpty()) {
+            sb.append("      -------- DRINKS --------\n");
+            for(Product d : drinks) {
+                sb.append(d.toString());
+            }
         }
 
-        sb.append("-------- CHIPS --------\n");
-        for(Product c : chips) {
-            sb.append(c.toString()).append("\n\n");
+        if (!chips.isEmpty()) {
+            sb.append("      -------- CHIPS --------\n");
+            for (Product c : chips) {
+                sb.append(c.toString()).append("\n");
+            }
         }
-
-        sb.append("\n TOTAL: $")
+        sb.append("--------------------------------------\n");
+        sb.append("TOTAL:     $")
                 .append(String.format("%.2f", calculateTotal()));
 
         return sb.toString();
