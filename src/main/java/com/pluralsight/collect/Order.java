@@ -1,5 +1,7 @@
 package com.pluralsight.collect;
 
+import com.pluralsight.enums.SandwichSize;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -41,6 +43,12 @@ public class Order {
         chips.remove(product);
     }
 
+    public void completeOrder() {
+        ReceiptManager receiptManager = new ReceiptManager(this);
+
+        receiptManager.saveReceipt();
+    }
+
     //this method makes sure that if the customer orders no sandwiches at all, they are REQUIRED to order chips or drinks
     public boolean isValid() {
         if(sandwiches.isEmpty()) {
@@ -71,5 +79,35 @@ public class Order {
         return total;
     }
 
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("DELICIOUS SANDWICHES\n");
+        sb.append("ORDER RECEIPT\n\n");
+
+        sb.append("-------- SANDWICHES --------\n");
+        for(Product s : sandwiches) {
+            sb.append(s.toString()).append("\n\n");
+        }
+
+        sb.append("-------- DRINKS --------\n");
+        for(Product d : drinks) {
+            sb.append(d.toString()).append("\n\n");
+        }
+
+        sb.append("-------- CHIPS --------\n");
+        for(Product c : chips) {
+            sb.append(c.toString()).append("\n\n");
+        }
+
+        sb.append("\n TOTAL: $")
+                .append(String.format("%.2f", calculateTotal()));
+
+        return sb.toString();
+
+
+    }
 
 }

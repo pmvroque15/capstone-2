@@ -29,12 +29,13 @@ public class DeliciousMain {
        order.addChips(chips);
        order.addDrink(drink);
 
-        System.out.println("ORDER SUMMARY:");
-        System.out.println(sandwich);
-        System.out.println(chips);
-        System.out.println(drink);
-        System.out.println("TOTAL: " + order.calculateTotal());
+//        System.out.println("ORDER SUMMARY:");
+//        System.out.println(sandwich);
+//        System.out.println(chips);
+//        System.out.println(drink);
+//        System.out.println("TOTAL: " + order.calculateTotal());
 
+        order.completeOrder();
 
     }
 }
