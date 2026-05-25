@@ -1,4 +1,5 @@
 package com.pluralsight.collect;
+
 import com.pluralsight.enums.BreadType;
 import com.pluralsight.enums.SandwichSize;
 
@@ -63,11 +64,10 @@ public class UserInterface {
 
     public Sandwich createASandwich() {
         //todo: clean this, make each prompt a new method
-        SandwichSize sandwichSize = chooseSandwichSize();
-        BreadType breadType = chooseBreadType();
-        boolean isToasted = isToasted();
-        Ingredient meat = chooseAMeat();
+        Sandwich sandwich = new Sandwich(chooseSandwichSize(), chooseBreadType(), isToasted());
 
+        Ingredient meat = chooseAMeat();
+        sandwich.addIngredient(meat);
 
         System.out.println("Cheese: ");
         System.out.println("Other toppings: ");
@@ -75,7 +75,7 @@ public class UserInterface {
 
 
         //todo make a defensive code make sure arguments are NOT null
-        return new Sandwich(sandwichSize, breadType, isToasted);
+        return sandwich;
 
     }
 
@@ -125,7 +125,7 @@ public class UserInterface {
             System.out.println("Select your bread: (Whole, Wheat, Wrap, or Rye) ");
             String bread = scanner.nextLine().toUpperCase();
             switch (bread) {
-                case "WHITE":
+                case "WHEAT":
                     breadType = BreadType.WHITE;
                     running = false;
                     break;
@@ -152,27 +152,37 @@ public class UserInterface {
     }
 
     public Ingredient chooseAMeat() {
-        boolean running = true;
-        String meat = null;
 
-            String[] meats = {"Steak", "Ham", "Salami", "Roast Beef", "Chicken", "Bacon"};
-            System.out.println("Choose your protein: ");
-            for (String m: meats) {
-                System.out.println(m);
+        String[] meats = {"Steak", "Ham", "Salami", "Roast Beef", "Chicken", "Bacon"};
+
+        String meat = chooseFromMenu("Choose your protein", meats);
+
+        System.out.printf("Do you want extra of %s? y/n", meat);
+        boolean isExtra = scanner.nextLine().equalsIgnoreCase("y");
+
+        return new Meat(meat, isExtra);
+    }
+
+    //helper method
+    public String chooseFromMenu(String prompt, String[] options) {
+
+        while (true) {
+            System.out.println(prompt);
+
+            for (String option : options) {
+                System.out.println("- " + option);
             }
+
             String input = scanner.nextLine();
 
-            for (String m: meats) {
-                if(input.equalsIgnoreCase(m)) {
-                    meat = m;
+            for (String option : options) {
+                if (input.equalsIgnoreCase(option)) {
+                    return option;
                 }
             }
 
-            System.out.printf("Do you want extra of %s? y/n", meat);
-            String anotherInput = scanner.nextLine();
-            boolean isExtra = anotherInput.equalsIgnoreCase("y");
-
-        return new Meat(meat, isExtra);
+            System.err.println("Invalid selection.");
+        }
     }
 
     private void createAChipsOrderRequest() {
