@@ -7,7 +7,11 @@ public class Order {
     private ArrayList<Product> sandwiches = new ArrayList<>();
     private ArrayList<Product> drinks = new ArrayList<>();
     private ArrayList<Product> chips = new ArrayList<>();
-    private LocalDateTime orderTimeAndDate = LocalDateTime.now();
+    private LocalDateTime orderTime;
+
+    public Order() {
+       this.orderTime = LocalDateTime.now();
+    }
 
     public void addSandwich(Product product){
         sandwiches.add(product);
@@ -19,6 +23,10 @@ public class Order {
 
     public void addChips(Product product) {
         chips.add(product);
+    }
+
+    public LocalDateTime getOrderTime() {
+        return orderTime;
     }
 
     public void removeSandwich(Product product) {
