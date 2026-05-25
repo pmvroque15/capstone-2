@@ -1,20 +1,24 @@
 package com.pluralsight.collect;
 
+import java.sql.SQLOutput;
+
 public class DeliciousMain {
     public static void main(String[] args) {
-       Sandwich sandwich = new Sandwich(SandwichSize.TWELVE_INCH, BreadType.WHOLE, false);
-       Sandwich meat2 = new Meat("Steak", true);
-       Sandwich cheese = new Cheese("Provolone", false);
-       Sandwich cheese2 = new Cheese("Provolone", false);
-       Sandwich lettuce = new RegularTopping("lettuce");
-       Sandwich tomato = new RegularTopping("tomato");
-       Chips chips = new Chips("Cheetos");
-       Drink drink = new Drink(DrinkSize.MEDIUM);
-       sandwich.addIngredient(meat2);
-       sandwich.addIngredient(cheese);
-       sandwich.addIngredient(lettuce);
-       sandwich.addIngredient(tomato);
-       sandwich.addIngredient(cheese2);
+//       Sandwich sandwich = new Sandwich(SandwichSize.TWELVE_INCH, BreadType.WHOLE, false);
+       Sandwich meat2 = new Meat("Steak", SandwichSize.FOUR_INCH,true);
+        System.out.println(meat2);
+       Sandwich cheese = new Cheese("Provolone", SandwichSize.FOUR_INCH,true);
+        System.out.println(cheese);
+//       Sandwich cheese2 = new Cheese("Provolone", false);
+//       Sandwich lettuce = new RegularTopping("lettuce");
+//       Sandwich tomato = new RegularTopping("tomato");
+//       Chips chips = new Chips("Cheetos");
+//       Drink drink = new Drink(DrinkSize.MEDIUM);
+//       sandwich.addIngredient(meat2);
+//       sandwich.addIngredient(cheese);
+//       sandwich.addIngredient(lettuce);
+//       sandwich.addIngredient(tomato);
+//       sandwich.addIngredient(cheese2);
 
 //      UserInterface ui = new UserInterface();
 //
@@ -22,14 +26,14 @@ public class DeliciousMain {
 
 
 
-        Order order = new Order();
+//        Order order = new Order();
 
-
-        System.out.println("ORDER SUMMARY:");
-        System.out.println(sandwich);
-        System.out.println(chips);
-        System.out.println(drink);
-        System.out.println("TOTAL: " + order.calculateTotal());
+//
+//        System.out.println("ORDER SUMMARY:");
+//        System.out.println(sandwich);
+//        System.out.println(chips);
+//        System.out.println(drink);
+//        System.out.println("TOTAL: " + order.calculateTotal());
 
 
 

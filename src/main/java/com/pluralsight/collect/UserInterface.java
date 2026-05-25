@@ -78,26 +78,26 @@
 //
 //    public Sandwich createASandwichOrder() {
 //        //todo: Ask David if it's better to make a method for this. CreateASandwich class?
-//        RegularTopping.SandwichSize size = chooseSandwichSize();
-//        RegularTopping.BreadType breadType = chooseBreadType();
+//       SandwichSize size = chooseSandwichSize();
+//       BreadType breadType = chooseBreadType();
 //        boolean isToasted = isToasted();
 //        Sandwich sandwich = new Sandwich(size, breadType, isToasted);
 //
-//        Ingredient meat = chooseAMeat();
+//        Sandwich meat = chooseAMeat();
 //        sandwich.addIngredient(meat);
 //
-//        Ingredient cheese = chooseACheese();
+//        Sandwich cheese = chooseACheese();
 //        sandwich.addIngredient(cheese);
 //
-//        ArrayList<Ingredient> regularToppings = chooseRegularToppings();
-//        for (Ingredient i : regularToppings) {
+//        ArrayList<Sandwich> regularToppings = chooseRegularToppings();
+//        for (Sandwich i : regularToppings) {
 //            sandwich.addIngredient(i);
 //        }
 //
-//        Ingredient sauce = chooseASauce();
+//        Sandwich sauce = chooseASauce();
 //        sandwich.addIngredient(sauce);
 //
-//        Ingredient side = chooseASide();
+//        Sandwich side = chooseASide();
 //        sandwich.addIngredient(side);
 //
 //        //todo make a defensive code make sure arguments are NOT null
@@ -105,7 +105,7 @@
 //
 //    }
 //
-//    public Ingredient chooseASide() {
+//    public Sandwich chooseASide() {
 //        String[] sides = {"Au jus", "Sauce"};
 //
 //        String side = chooseFromMenu("Choose a side: ", sides);
@@ -113,7 +113,7 @@
 //        return new Side(side);
 //    }
 //
-//    public Ingredient chooseASauce() {
+//    public Sandwich chooseASauce() {
 //        String[] sauces = {"Mayo", "Mustard", "Ketchup", "Ranch", "Thousand Islands", "Vinaigrette"};
 //
 //        String sauce = chooseFromMenu("Choose your sauce: ", sauces);
@@ -121,8 +121,8 @@
 //        return new Sauce(sauce);
 //    }
 //
-//    public ArrayList<Ingredient> chooseRegularToppings() {
-//        ArrayList<Ingredient> toppingsList = new ArrayList<>();
+//    public ArrayList<Sandwich> chooseRegularToppings() {
+//        ArrayList<Sandwich> toppingsList = new ArrayList<>();
 //        String[] toppings = {"Lettuce", "Peppers", "Onions",
 //                "Tomatoes", "Jalapeños", "Cucumbers",
 //                "Pickles", "Guacamole", "Mushrooms"};
@@ -136,7 +136,7 @@
 //            }
 //            boolean duplicate = false;
 //
-//            for (Ingredient t : toppingsList) {
+//            for (Sandwich t : toppingsList) {
 //                if (topping.equalsIgnoreCase(t.getName())) {
 //                    System.err.printf("Yo, what's up with the %s? Try again.\n", t.getName());
 //
@@ -160,7 +160,7 @@
 //        return toppingsList;
 //    }
 //
-//    public Ingredient chooseACheese() {
+//    public Sandwich chooseACheese() {
 //        String[] kindOfCheese = {"American", "Provolone", "Cheddar", "Swiss"};
 //        String cheese = chooseFromMenu("Pick your cheese", kindOfCheese);
 //
@@ -177,24 +177,24 @@
 //        return toasted.equalsIgnoreCase("Yes");
 //    }
 //
-//    public RegularTopping.SandwichSize chooseSandwichSize() {
+//    public SandwichSize chooseSandwichSize() {
 //        boolean running = true;
 //
-//        RegularTopping.SandwichSize sandwichSize = null;
+//       SandwichSize sandwichSize = null;
 //        do {
 //            System.out.println("Sandwich size: (4, 8, 12)");
 //            int size = Integer.parseInt(scanner.nextLine());
 //            switch (size) {
 //                case 4:
-//                    sandwichSize = RegularTopping.SandwichSize.FOUR_INCH;
+//                    sandwichSize = SandwichSize.FOUR_INCH;
 //                    running = false;
 //                    break;
 //                case 8:
-//                    sandwichSize = RegularTopping.SandwichSize.EIGHT_INCH;
+//                    sandwichSize = SandwichSize.EIGHT_INCH;
 //                    running = false;
 //                    break;
 //                case 12:
-//                    sandwichSize = RegularTopping.SandwichSize.TWELVE_INCH;
+//                    sandwichSize = SandwichSize.TWELVE_INCH;
 //                    running = false;
 //                    break;
 //                default:
@@ -207,29 +207,29 @@
 //        return sandwichSize;
 //    }
 //
-//    public RegularTopping.BreadType chooseBreadType() {
+//    public BreadType chooseBreadType() {
 //
 //        boolean running = true;
-//        RegularTopping.BreadType breadType = null;
+//        BreadType breadType = null;
 //        //todo clean the default err message it should show BEFORE the prompt if the user typed invalid input
 //        do {
 //            System.out.println("Select your bread: (Whole, Wheat, Wrap, or Rye) ");
 //            String bread = scanner.nextLine().toUpperCase();
 //            switch (bread) {
 //                case "WHEAT":
-//                    breadType = RegularTopping.BreadType.WHEAT;
+//                    breadType = BreadType.WHEAT;
 //                    running = false;
 //                    break;
 //                case "RYE":
-//                    breadType = RegularTopping.BreadType.RYE;
+//                    breadType = BreadType.RYE;
 //                    running = false;
 //                    break;
 //                case "WHOLE":
-//                    breadType = RegularTopping.BreadType.WHOLE;
+//                    breadType = BreadType.WHOLE;
 //                    running = false;
 //                    break;
 //                case "WRAP":
-//                    breadType = RegularTopping.BreadType.WRAP;
+//                    breadType = BreadType.WRAP;
 //                    running = false;
 //                    break;
 //                default:
@@ -242,7 +242,7 @@
 //        return breadType;
 //    }
 //
-//    public Ingredient chooseAMeat() {
+//    public Sandwich chooseAMeat() {
 //
 //        String[] meats = {"Steak", "Ham", "Salami", "Roast Beef", "Chicken", "Bacon"};
 //
@@ -303,13 +303,13 @@
 //            return null;
 //        }
 //
-//        RegularTopping.DrinkSize size = null;
+//        DrinkSize size = null;
 //
 //        while (size == null) {
 //            try {
 //                if (input.equalsIgnoreCase("y")) {
 //                    System.out.println("What size? (Small, Medium, Large)");
-//                    size = RegularTopping.DrinkSize.valueOf(scanner.nextLine().toUpperCase());
+//                    size = DrinkSize.valueOf(scanner.nextLine().toUpperCase());
 //                }
 //            } catch (IllegalArgumentException e) {
 //                System.err.println("Invalid size. Try again.");

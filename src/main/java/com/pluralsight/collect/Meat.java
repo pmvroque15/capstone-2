@@ -1,44 +1,45 @@
 package com.pluralsight.collect;
 
 public class Meat extends Sandwich {
-    public Meat(String name, boolean isExtra) {
-        super(name, isExtra);
+    private final boolean isExtra;
+    private final String name;
+
+    public Meat(String name, SandwichSize sandwichSize, boolean isExtra) {
+        super(sandwichSize);
+        this.isExtra = isExtra;
+        this.name = name;
     }
 
-    @Override
     public String getName() {
-        return super.getName();
+        return this.name;
     }
 
-    public double getPrice(RegularTopping.SandwichSize size) {
-        if (isExtra()) {
-            switch (size) {
-                case FOUR_INCH:
-                    return 1.50;
-                case EIGHT_INCH:
-                    return 3.00;
-                case TWELVE_INCH:
-                    return 4.50;
-            }
+    public boolean isExtra() {
+        return this.isExtra;
+    }
+
+    public double getPrice(SandwichSize size) {
+        if (isExtra) {
+            return switch (size) {
+                case FOUR_INCH -> 1.50;
+                case EIGHT_INCH -> 3.00;
+                case TWELVE_INCH -> 4.50;
+            };
         }
 
-        switch (size) {
-            case FOUR_INCH:
-                return 1.00;
-            case EIGHT_INCH:
-                return 2.00;
-            case TWELVE_INCH:
-                return 3.00;
-        }
-        return 0;
+        return switch (size) {
+            case FOUR_INCH -> 1.00;
+            case EIGHT_INCH -> 2.00;
+            case TWELVE_INCH -> 3.00;
+        };
     }
 
     @Override
     public String toString() {
-        if(!isExtra()) {
-            return getName();
+        if (!isExtra) {
+            return String.format("MEAT: %s%nPRICE: $%.2f%n", getName(), getPrice(this.getSize()));
         }
-       return String.format("Extra: %s%n", getName());
+        return String.format("MEAT: %s(extra)%nPRICE: $%.2f%n", getName(), getPrice(this.getSize()));
     }
 }
 
