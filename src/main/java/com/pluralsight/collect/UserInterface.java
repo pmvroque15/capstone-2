@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class UserInterface {
     private final Scanner scanner = new Scanner(System.in);
-    private Order order = new Order();
+    Order order;
 
     public void display() {
         homeScreen();
@@ -46,23 +46,32 @@ public class UserInterface {
             switch (input) {
                 case 1:
                     Sandwich sandwich = createASandwichOrder();
-                    order.addSandwich(sandwich);
-                    System.out.println("TEST: Sandwich!");
+
+                    if (sandwich != null) {
+                        order.addSandwich(sandwich);
+                        System.out.println("TEST: Sandwich!");
+                    }
                     break;
                 case 2:
                     Drink drink = createADrinkOrder();
-                    order.addDrink(drink);
-                    System.out.println("TEST: Drink!");
+                    if (drink != null) {
+                        order.addDrink(drink);
+                    }
+
                     break;
                 case 3:
                     Chips chips = createAChipsOrder();
-                    order.addChips(chips);
+
+                    if (chips != null) {
+                        order.addChips(chips);
+                    }
                     System.out.println("TEST: chips!");
                     break;
                 case 4:
-                    checkoutRequest();
+                    checkout();
                     break;
                 case 0:
+                    cancelOrder();
                     running = false;
                     break;
                 default:
@@ -124,7 +133,7 @@ public class UserInterface {
             String topping = chooseFromMenu("Pick a topping: ", toppings);
 
             if (topping.isEmpty()) {
-                return null;
+                return new ArrayList<>();
             }
             boolean duplicate = false;
 
@@ -137,7 +146,7 @@ public class UserInterface {
                 }
             }
 
-            if(!duplicate) {
+            if (!duplicate) {
                 toppingsList.add(new RegularTopping(topping));
             }
             System.out.println("Do you want to add another topping? y/n");
@@ -260,7 +269,7 @@ public class UserInterface {
 
             String input = scanner.nextLine();
 
-            if(input.isEmpty()) {
+            if (input.isEmpty()) {
                 return "";
             }
 
@@ -278,7 +287,7 @@ public class UserInterface {
         System.out.println("What chips would you like? (Enter to skip)");
         String input = scanner.nextLine();
 
-        if(input.isBlank()) {
+        if (input.isBlank()) {
             return null;
         }
 
@@ -287,31 +296,43 @@ public class UserInterface {
 
     public Drink createADrinkOrder() {
         //What if the user wants more than one drink?
-        System.out.println("What drink would you like? (Enter to skip)");
+
+        System.out.println("Would you like a drink? (y/n or Enter to skip)");
         String input = scanner.nextLine();
 
-        if(input.isBlank()) {
+        if (input.isBlank() || input.equalsIgnoreCase("n")) {
             return null;
         }
 
-        System.out.println("What size? ");
-        DrinkSize size = DrinkSize.valueOf(scanner.nextLine().toUpperCase());
+        DrinkSize size = null;
 
-        return new Drink(size, input);
+        while (size == null) {
+            try {
+                if (input.equalsIgnoreCase("y")) {
+                    System.out.println("What size? (Small, Medium, Large)");
+                    size = DrinkSize.valueOf(scanner.nextLine().toUpperCase());
+                }
+            } catch (IllegalArgumentException e) {
+                System.err.println("Invalid size. Try again.");
+            }
+        }
 
-    }
-
-    public void checkoutScreen() {
-
+        return new Drink(size);
     }
 
     public void exit() {
         System.out.println("Thank you for using the app!");
     }
 
+    public void cancelOrder() {
+        order.cancelOrder();
+    }
 
-    private void checkoutRequest() {
-        System.out.println("TEST checkout");
+    public void checkout() {
+        //todo Make sure the math is right AND it populates accurately.
+        //todo render the order then confirms or cancel the order before completing the order
+        order.completeOrder();
+        System.out.println(order.calculateTotal());
     }
 
 

@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Order {
+    //todo change from three arraylists to one
     private ArrayList<Product> sandwiches = new ArrayList<>();
     private ArrayList<Product> drinks = new ArrayList<>();
     private ArrayList<Product> chips = new ArrayList<>();
@@ -41,6 +42,12 @@ public class Order {
 
     public void removeChips(Product product) {
         chips.remove(product);
+    }
+
+    public void cancelOrder() {
+        sandwiches.clear();
+        chips.clear();
+        drinks.clear();
     }
 
     public void completeOrder() {

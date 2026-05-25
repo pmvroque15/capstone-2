@@ -3,17 +3,11 @@ package com.pluralsight.collect;
 import com.pluralsight.enums.DrinkSize;
 
 public class Drink implements Product {
-    private DrinkSize drinkSize;
+    private final DrinkSize drinkSize;
     private double price = 0;
-    private String flavour;
-    public Drink(DrinkSize drinkSize, String flavour) {
+    public Drink(DrinkSize drinkSize) {
         this.drinkSize = drinkSize;
         this.price = drinkSize.getPrice();
-        this.flavour = flavour;
-    }
-
-    public String getFlavour() {
-        return flavour;
     }
 
     public DrinkSize getDrinkSize() {
@@ -26,6 +20,6 @@ public class Drink implements Product {
     }
 
     public String toString(){
-        return String.format("\t   %s %s $%.2f %n", getDrinkSize(), getFlavour(), calculatePrice());
+        return String.format("\t   %s $%.2f %n", getDrinkSize(), calculatePrice());
     }
 }
