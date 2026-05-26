@@ -28,8 +28,9 @@ public class MenuStrings {
                                               Signature Sandwiches
                                         --------------------------------
                                                 Select an option:
-                                           Type "BLT" for BLT sandwich
-                                      Type "Philly" for Philly Cheese Steak
+                                              "BLT" - BLT sandwich
+                                           "Philly" - Philly Cheese Steak
+                                              "0"   - go back to the menu
             """;
 
     public static void mainMenuDisplay() {

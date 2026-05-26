@@ -82,7 +82,7 @@ public class UserInterface {
                         checkout(order);
                         break;
                     case 5:
-                       chooseASignatureSandwich();
+                       chooseASignatureSandwich(order);
                         break;
                     case 0:
                         cancelOrder(order);
@@ -98,8 +98,7 @@ public class UserInterface {
         } while (running);
     }
 
-    public void chooseASignatureSandwich() {
-        Order order = new Order();
+    public void chooseASignatureSandwich(Order order) {
         boolean runnning = true;
 
         do {
