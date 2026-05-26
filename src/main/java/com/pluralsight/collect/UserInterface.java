@@ -368,15 +368,32 @@ public class UserInterface {
     }
 
     public void cancelOrder(Order order) {
+
+        ReceiptManager receiptManager = new ReceiptManager(order);
+//todo ask David how to delete a file
+    //        receiptManager.deleteCurrentReceipt();
+
         order.cancelOrder();
 
-        System.out.println("Order Canceled.");
     }
+    public void addTips(Order order) {
 
+        System.out.println("Would you like to add a tip? (y/n):");
+        String input = scanner.nextLine();
+
+        if(input.equalsIgnoreCase("n")) {
+            order.setAmount(0);
+        } else if(input.equalsIgnoreCase("y")) {
+            System.out.println("Tip:  $");
+            double inputTip = Double.parseDouble(scanner.nextLine());
+            order.setAmount(inputTip);
+            System.out.println("Tip added to the total!");
+        }
+    }
     public void checkout(Order order) {
+        addTips(order);
         System.out.println(order);
         System.out.println("Place your order? Type \"y\" to check out, \"n\" to go back to the menu, \"x\" to cancel the order.");
-
         String input = scanner.nextLine();
 
         if (input.equalsIgnoreCase("y")) {
@@ -392,8 +409,6 @@ public class UserInterface {
             System.out.println("Returning to the menu...");
         }
     }
-
-
 }
 
 

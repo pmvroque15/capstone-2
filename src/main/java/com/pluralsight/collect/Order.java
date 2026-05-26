@@ -7,9 +7,10 @@ public class Order {
     //todo Product, Sandwich, and Order class need refactoring on organization of saving in arraylists.
     private final ArrayList<Product> products = new ArrayList<>();
     private final LocalDateTime orderTime;
-
+    private double amount;
     public Order() {
        this.orderTime = LocalDateTime.now();
+
     }
 
     public void addProduct(Product product){
@@ -17,7 +18,7 @@ public class Order {
     }
 
     public LocalDateTime getOrderTime() {
-        return orderTime;
+        return this.orderTime;
     }
 
     public void removeProduct(Product product) {
@@ -31,7 +32,15 @@ public class Order {
     public void completeOrder() {
         ReceiptManager receiptManager = new ReceiptManager(this);
 
-        receiptManager.saveReceipt();
+       receiptManager.saveReceipt();
+    }
+
+    public double getAmount() {
+        return this.amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     //this method makes sure that if the customer orders no sandwiches at all, they are REQUIRED to order chips or drinks
@@ -58,8 +67,14 @@ public class Order {
         return true;
     }
 
+
     public double calculateTotal() {
+
         double total = 0;
+
+        if(amount != 0) {
+            total += amount;
+        }
 
         for(Product p: products) {
             if(p == null) {
@@ -76,8 +91,11 @@ public class Order {
 
         StringBuilder sb = new StringBuilder();
         sb.append("================ ORDER RECEIPT ===============\n");
-        sb.append("             DELICIOUS SANDWICHES \n");
+        sb.append("           DELIcious Sandwiches 24/7 \n");
+        sb.append("       \"Built Different. Stacked right.\"\n");
+        sb.append("       123 Main street | (123) 456-3456   \n");
         sb.append("==============================================\n");
+        //todo maybe add a random orderNumber here
         for(Product p : products) {
             if(p instanceof  Sandwich sandwich) {
                 sb.append("      ").append(sandwich).append("\n");
@@ -95,12 +113,11 @@ public class Order {
             }
         }
         sb.append("-----------------------------------------------\n");
-        sb.append("TOTAL:     $")
-                .append(String.format("%.2f", calculateTotal()));
+        //todo make a prompt for the tip and add it to the total
+        sb.append(String.format("TIP:                                      $%.2f\n", getAmount()));
+        sb.append(String.format("TOTAL:                                    $%.2f\n", calculateTotal()));
 
         return sb.toString();
-
-
     }
 
 }
