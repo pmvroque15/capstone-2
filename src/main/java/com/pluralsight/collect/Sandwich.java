@@ -3,10 +3,13 @@ package com.pluralsight.collect;
 import java.util.HashSet;
 
 public class Sandwich implements Product {
-    private final SandwichSize sandwichSize;
-    private final BreadType breadType;
+    SandwichSize sandwichSize;
+    BreadType breadType;
     private final HashSet<Product> ingredients = new HashSet<>();
-    private final boolean isToasted;
+    boolean isToasted;
+
+    public Sandwich() {
+    }
 
     public Sandwich(SandwichSize sandwichSize, BreadType breadType, boolean isToasted) {
         this.sandwichSize = sandwichSize;

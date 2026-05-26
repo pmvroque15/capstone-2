@@ -2,6 +2,7 @@ package com.pluralsight.collect;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -80,6 +81,9 @@ public class UserInterface {
                     case 4:
                         checkout(order);
                         break;
+                    case 5:
+                       chooseASignatureSandwich();
+                        break;
                     case 0:
                         cancelOrder(order);
                         running = false;
@@ -92,6 +96,36 @@ public class UserInterface {
                 System.err.println("Bro the bodega cat is judging you right now. TYPE. A. NUMBER.");
             }
         } while (running);
+    }
+
+    public void chooseASignatureSandwich() {
+        Order order = new Order();
+        boolean runnning = true;
+
+        do {
+            try {
+
+            MenuStrings.signaturesSandwichesDisplay();
+            String input = scanner.nextLine();
+                switch (input) {
+                    case "BLT":
+                        BLTSandwich bltSandwich = new BLTSandwich();
+
+                            order.addProduct(bltSandwich);
+                            System.out.println("BLT sandwich is successfully added to your cart.");
+                        break;
+                    case "PHILLY":
+                        break;
+                    case "0":
+                        runnning = false;
+                        break;
+                    default:
+                        System.err.println("ERROR");
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("Invalid input. Try again.");
+            }
+        } while (runnning);
     }
 
     public Product createASandwichOrder() {
@@ -177,9 +211,9 @@ public class UserInterface {
                 running = false;
             }
 
-            if(!topping.isBlank()) {
+            if (!topping.isBlank()) {
                 boolean added = toppingsList.add(new RegularTopping(topping));
-                if(!added) {
+                if (!added) {
                     System.err.printf("Yo, what's up with your %s? Try another topping.", topping);
                 }
             }
@@ -217,9 +251,9 @@ public class UserInterface {
         System.out.println("Would you like the sandwich toasted? (y/n):");
         String toasted = scanner.nextLine();
 
-        if(toasted.equalsIgnoreCase("y")) {
+        if (toasted.equalsIgnoreCase("y")) {
             return true;
-        } else if(toasted.equalsIgnoreCase("n")) {
+        } else if (toasted.equalsIgnoreCase("n")) {
             return false;
         } else {
             System.err.println("Invalid input, Please enter 'y' or 'n'");
@@ -375,14 +409,15 @@ public class UserInterface {
         System.out.println("Order is canceled.");
 
     }
+
     public void addTips(Order order) {
 
         System.out.println("Would you like to add a tip? (y/n):");
         String input = scanner.nextLine();
 
-        if(input.equalsIgnoreCase("n")) {
+        if (input.equalsIgnoreCase("n")) {
             order.setAmount(0);
-        } else if(input.equalsIgnoreCase("y")) {
+        } else if (input.equalsIgnoreCase("y")) {
             boolean isValid = false;
             do {
                 try {
@@ -393,13 +428,14 @@ public class UserInterface {
                     System.out.println("Tip added to the total!");
                     isValid = true;
                 } catch (NumberFormatException e) {
-                    System.err.println("Invalid input. Try again.");;
+                    System.err.println("Invalid input. Try again.");
                 }
             } while (!isValid);
         }
     }
+
     public void checkout(Order order) {
-        if(order.getProducts().isEmpty()) {
+        if (order.getProducts().isEmpty()) {
             System.err.println("Your cart is empty. Add an item to proceed.");
             return;
         }
@@ -410,7 +446,7 @@ public class UserInterface {
 
         if (input.equalsIgnoreCase("y")) {
 
-            if(!order.isValid()) {
+            if (!order.isValid()) {
                 System.err.println("To checkout, you must order either chips or a drink.");
             }
             order.completeOrder();

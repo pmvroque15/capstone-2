@@ -1,5 +1,7 @@
 package com.pluralsight.collect;
 
+import java.security.Signature;
+
 public class MenuStrings {
     private static final String MAIN_MENU = """
             
@@ -19,7 +21,15 @@ public class MenuStrings {
                                                 2 - Add Drink
                                                 3 - Add Chips
                                                 4 - Checkout
+                                                5 - Signature Sandwiches
                                                 0 - Cancel Order
+            """;
+    private static final String SIGNATURE_SANDWICHES = """   
+                                              Signature Sandwiches
+                                        --------------------------------
+                                                Select an option:
+                                           Type "BLT" for BLT sandwich
+                                      Type "Philly" for Philly Cheese Steak
             """;
 
     public static void mainMenuDisplay() {
@@ -28,5 +38,9 @@ public class MenuStrings {
 
     public static void orderMenuDisplay() {
         System.out.println(ORDER_MENU);
+    }
+
+    public static void signaturesSandwichesDisplay() {
+        System.out.println(SIGNATURE_SANDWICHES);
     }
 }
