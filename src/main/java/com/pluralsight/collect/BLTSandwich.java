@@ -10,7 +10,7 @@ package com.pluralsight.collect;
 public class BLTSandwich extends Sandwich{
 
     public BLTSandwich() {
-        super(SandwichSize.EIGHT_INCH, BreadType.WHEAT, true);
+        super(SandwichSize.EIGHT_INCH, BreadType.WHITE, true);
 
         addBLT();
     }

@@ -1,6 +1,5 @@
 package com.pluralsight.collect;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -306,7 +305,7 @@ public class UserInterface {
             String bread = scanner.nextLine().toUpperCase();
             switch (bread) {
                 case "WHEAT":
-                    breadType = BreadType.WHEAT;
+                    breadType = BreadType.WHITE;
                     running = false;
                     break;
                 case "RYE":
