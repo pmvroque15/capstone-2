@@ -93,7 +93,7 @@ public class Order {
         sb.append("           DELIcious Sandwiches 24/7 \n");
         sb.append("       \"Built Different. Stacked right.\"\n");
         sb.append("       123 Main street | (123) 456-3456   \n");
-        sb.append("==============================================\n");
+        sb.append("==============================================\n\n");
         //todo maybe add a random orderNumber here
         for(Product p : products) {
             if(p instanceof  Sandwich sandwich) {
@@ -110,6 +110,7 @@ public class Order {
                 sb.append("    ").append(chips).append("\n");
 
             }
+
         }
         sb.append("-----------------------------------------------\n");
         //todo make a prompt for the tip and add it to the total

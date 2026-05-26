@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class UserInterface {
     //todo make defensive coding on each prompts
     private final Scanner scanner = new Scanner(System.in);
+    private Order order;
 
     public void display() {
         homeScreen();
@@ -39,8 +40,8 @@ public class UserInterface {
     }
 
     public void orderScreen() {
-        Order order = new Order();
 
+        order = new Order();
         boolean running = true;
         do {
             try {
@@ -81,7 +82,7 @@ public class UserInterface {
                         checkout(order);
                         break;
                     case 5:
-                       chooseASignatureSandwich(order);
+                        chooseASignatureSandwich(order);
                         break;
                     case 0:
                         cancelOrder(order);
@@ -103,14 +104,14 @@ public class UserInterface {
         do {
             try {
 
-            MenuStrings.signaturesSandwichesDisplay();
-            String input = scanner.nextLine();
+                MenuStrings.signaturesSandwichesDisplay();
+                String input = scanner.nextLine();
                 switch (input) {
                     case "BLT":
                         BLTSandwich bltSandwich = new BLTSandwich();
 
-                            order.addProduct(bltSandwich);
-                            System.out.println("BLT sandwich is successfully added to your cart.");
+                        order.addProduct(bltSandwich);
+                        System.out.println("BLT sandwich is successfully added to your cart.");
                         break;
                     case "PHILLY":
                         PhillyCheeseSteak phillyCheeseSteak = new PhillyCheeseSteak();
@@ -123,6 +124,7 @@ public class UserInterface {
                         break;
                     default:
                         System.err.println("ERROR");
+
                 }
             } catch (InputMismatchException e) {
                 System.err.println("Invalid input. Try again.");

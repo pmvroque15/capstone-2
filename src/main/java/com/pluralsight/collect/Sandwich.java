@@ -5,7 +5,7 @@ import java.util.HashSet;
 public class Sandwich implements Product {
     SandwichSize sandwichSize;
     BreadType breadType;
-    private final HashSet<Product> ingredients = new HashSet<>();
+    final HashSet<Product> ingredients = new HashSet<>();
     boolean isToasted;
 
     public Sandwich() {
