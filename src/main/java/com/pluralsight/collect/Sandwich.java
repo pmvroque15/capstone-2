@@ -14,8 +14,17 @@ public class Sandwich implements Product {
         this.isToasted = isToasted;
     }
 
-    public SandwichSize getSize() {
-        return sandwichSize;
+    public String getSize() {
+        String size = "";
+        if(sandwichSize.equals(SandwichSize.FOUR_INCH)) {
+            size = "FOUR INCH";
+        } else if(sandwichSize.equals(SandwichSize.EIGHT_INCH)) {
+            size = "EIGHT INCH";
+        } else if (sandwichSize.equals(SandwichSize.TWELVE_INCH)) {
+            size = "TWELVE INCH";
+        }
+
+        return size;
     }
 
     public BreadType getBreadType() {
@@ -61,7 +70,7 @@ public class Sandwich implements Product {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("  ").append(this.sandwichSize).append(" on ").append(this.breadType);
+        sb.append("  ").append(getSize()).append(" on ").append(this.breadType);
 
         //if it's not toasted, just leave it empty and move forward.
         if (isToasted) {
@@ -91,14 +100,7 @@ public class Sandwich implements Product {
             }
             sb.append("\n");
 
-            if(p instanceof Drink drink) {
-                sb.append(drink).append("\n");
-            }
 
-            if(p instanceof Chips chips) {
-                sb.append(chips).append("\n");
-
-            }
         }
         sb.append("--------------------------------------");
 

@@ -61,34 +61,22 @@ public class Order {
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
-
+        sb.append("========= UNOFFICIAL RECEIPT =========\n");
         for(Product p : products) {
-            sb.append(p.toString()).append("\n");
-        }
+            if(p instanceof RegularTopping regularTopping) {
+                sb.append(regularTopping).append("\n");
+            }
+            if(p instanceof Drink drink) {
+                sb.append("--------------------------------------\n");
+                sb.append(drink).append("\n");
+            }
 
-//        sb.append("     -------- SANDWICHES --------\n");
-//        double subtotal = 0;
-//        for(Product s : sandwiches) {
-//            sb.append(s.toString()).append("\n");
-//            subtotal += s.calculatePrice();
-//        }
-//
-//        sb.append("SUBTOTAL:  $").append(subtotal).append("\n");
-//
-//
-//        if (!drinks.isEmpty()) {
-//            sb.append("      -------- DRINKS --------\n");
-//            for(Product d : drinks) {
-//                sb.append(d.toString());
-//            }
-//        }
-//
-//        if (!chips.isEmpty()) {
-//            sb.append("      -------- CHIPS --------\n");
-//            for (Product c : chips) {
-//                sb.append(c.toString()).append("\n");
-//            }
-//        }
+            if(p instanceof Chips chips) {
+                sb.append("--------------------------------------\n");
+                sb.append(chips).append("\n");
+
+            }
+        }
         sb.append("--------------------------------------\n");
         sb.append("TOTAL:     $")
                 .append(String.format("%.2f", calculateTotal()));

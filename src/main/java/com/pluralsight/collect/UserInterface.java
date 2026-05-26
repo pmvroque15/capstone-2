@@ -139,7 +139,7 @@ public class UserInterface {
             String topping = chooseFromMenu("Pick a topping: ", toppings);
 
             if (topping.isBlank()) {
-                continue;
+                running = false;
             }
             boolean duplicate = false;
 
@@ -157,7 +157,7 @@ public class UserInterface {
                 toppingsList.add(new RegularTopping(topping));
             }
 
-            System.out.println("Do you want to add another topping? y/n");
+            System.out.println("Do you want to add another topping? (Y-yes or N-no)");
 
             String input = scanner.nextLine();
 
@@ -173,7 +173,7 @@ public class UserInterface {
         String[] kindOfCheese = {"American", "Provolone", "Cheddar", "Swiss"};
         String cheese = chooseFromMenu("Pick your cheese", kindOfCheese);
 
-        System.out.printf("Do you want extra of %s? y/n", cheese);
+        System.out.printf("Do you want extra of %s? (Y-yes or N-no)", cheese);
         boolean isExtra = scanner.nextLine().equalsIgnoreCase("y");
 
         return new Cheese(cheese, size, isExtra);
@@ -292,12 +292,12 @@ public class UserInterface {
     }
 
     public Chips createAChipsOrder() {
-        System.out.println("What you like to add a bag of chips? (Enter to skip)");
-        String input = scanner.nextLine();
+//        System.out.println("What you like to add a bag of chips? (Y-yes, N-no or Enter to skip)");
+//        String input = scanner.nextLine();
 
-        if (input.isBlank()) {
-            return null;
-        }
+//        if (input.isBlank()) {
+//            return null;
+//        }
 
         return new Chips();
     }
@@ -305,21 +305,13 @@ public class UserInterface {
     public Drink createADrinkOrder() {
         //What if the user wants more than one drink?
 
-        System.out.println("Would you like a drink? (y/n or Enter to skip)");
-        String input = scanner.nextLine();
-
-        if (input.isBlank() || input.equalsIgnoreCase("n")) {
-            return null;
-        }
-
         DrinkSize size = null;
 
         while (size == null) {
             try {
-                if (input.equalsIgnoreCase("y")) {
                     System.out.println("What size? (Small, Medium, Large)");
                     size = DrinkSize.valueOf(scanner.nextLine().toUpperCase());
-                }
+
             } catch (IllegalArgumentException e) {
                 System.err.println("Invalid size. Try again.");
             }
@@ -342,7 +334,7 @@ public class UserInterface {
 //        //todo Make sure the math is right AND it populates accurately.
 //        //todo render the order then confirms or cancel the order before completing the order
 //        order.completeOrder();
-        System.out.println(order);
+        System.out.println(order.toString());
     }
 
 
