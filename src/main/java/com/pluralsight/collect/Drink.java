@@ -17,7 +17,17 @@ public class Drink implements Product {
         return this.price;
     }
 
+    @Override
+    public String getName() {
+        return "DRINK";
+    }
+
+    @Override
+    public boolean isExtra() {
+        return false;
+    }
+
     public String toString(){
-        return String.format("\t   %s $%.2f %n", getDrinkSize(), calculatePrice());
+        return String.format("\t   %s %s $%.2f %n", getDrinkSize(), getName(), calculatePrice());
     }
 }

@@ -1,10 +1,9 @@
 package com.pluralsight.collect;
 
-public class Side extends Sandwich {
+public class Side implements Product {
     private final String name;
 
     public Side(String name) {
-        super();
         this.name = name;
     }
 
@@ -12,13 +11,17 @@ public class Side extends Sandwich {
         return name;
     }
 
+    public boolean isExtra() {
+        return false;
+    }
+
     @Override
-    public double getPrice() {
+    public double calculatePrice() {
         return 0;
     }
 
     @Override
     public String toString() {
-        return String.format("SIDE: %s%nPRICE: $%.2f", getName(), getPrice());
+        return String.format("SIDE: %s%nPRICE: $%.2f", getName(), calculatePrice());
     }
 }

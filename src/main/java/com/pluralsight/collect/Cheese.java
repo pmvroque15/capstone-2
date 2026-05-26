@@ -2,14 +2,15 @@ package com.pluralsight.collect;
 
 import java.util.Objects;
 
-public class Cheese extends Sandwich {
+public class Cheese implements Product{
     private final String name;
     private final boolean isExtra;
+    private final SandwichSize sandwichSize;
 
     public Cheese(String name, SandwichSize sandwichSize, boolean isExtra) {
-        super(sandwichSize);
         this.name = name;
         this.isExtra = isExtra;
+        this.sandwichSize = sandwichSize;
     }
 
     public String getName() {
@@ -21,17 +22,17 @@ public class Cheese extends Sandwich {
     }
 
     @Override
-    public double getPrice() {
+    public double calculatePrice() {
 
         if (this.isExtra) {
-            return switch (super.getSize()) {
+            return switch (sandwichSize) {
                 case FOUR_INCH -> 1.05;
                 case EIGHT_INCH -> 2.10;
                 case TWELVE_INCH -> 3.15;
             };
         }
 
-        return switch (super.getSize()) {
+        return switch (sandwichSize) {
             case FOUR_INCH -> 0.75;
             case EIGHT_INCH -> 1.50;
             case TWELVE_INCH -> 2.25;
@@ -42,9 +43,9 @@ public class Cheese extends Sandwich {
     @Override
     public String toString() {
         if (!isExtra) {
-            return String.format("CHEESE: %s%nPRICE: $%.2f%n", getName(), getPrice());
+            return String.format("CHEESE: %s%nPRICE: $%.2f%n", getName(), calculatePrice());
         }
-        return String.format("CHEESE: %s(extra)%nPRICE: $%.2f%n", getName(), getPrice());
+        return String.format("CHEESE: %s(extra)%nPRICE: $%.2f%n", getName(), calculatePrice());
     }
 
     @Override

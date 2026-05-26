@@ -2,15 +2,6 @@ package com.pluralsight.collect;
 
 public class Chips implements Product{
     //The customer can have freedom to choose what kind of "chip type" according to the instructions, and all chips will be the same price.
-    private String chipType;
-
-    public Chips(String chipType) {
-        this.chipType = chipType;
-    }
-
-    public String getChipType() {
-        return chipType;
-    }
 
     @Override
     public double calculatePrice(){
@@ -18,7 +9,17 @@ public class Chips implements Product{
     }
 
     @Override
+    public String getName() {
+        return "CHIPS";
+    }
+
+    @Override
+    public boolean isExtra() {
+        return false;
+    }
+
+    @Override
     public String toString() {
-        return String.format("\t   Chips (%s) $1.50",  getChipType());
+        return String.format("\t   %s $1.50", getName() );
     }
 }

@@ -9,34 +9,25 @@ public class DeliciousMain {
 //        System.out.println(meat2);
 //       Sandwich cheese = new Cheese("Provolone", SandwichSize.FOUR_INCH,true);
 //        System.out.println(cheese);
-//       Sandwich cheese2 = new Cheese("Provolone", false);
 //       Sandwich lettuce = new RegularTopping("lettuce");
 //       Sandwich tomato = new RegularTopping("tomato");
 //        System.out.println(tomato);
-        Sandwich sauce = new Sauce("Mayo");
-        System.out.println(sauce);
+//        Sandwich sauce = new Sauce("Mayo");
+//        System.out.println(sauce);
 //       Chips chips = new Chips("Cheetos");
 //       Drink drink = new Drink(DrinkSize.MEDIUM);
 //       sandwich.addIngredient(meat2);
 //       sandwich.addIngredient(cheese);
 //       sandwich.addIngredient(lettuce);
 //       sandwich.addIngredient(tomato);
-//       sandwich.addIngredient(cheese2);
-
-//      UserInterface ui = new UserInterface();
 //
-//      ui.display();
+      UserInterface ui = new UserInterface();
+
+      ui.display();
 
 
 
-//        Order order = new Order();
 
-//
-//        System.out.println("ORDER SUMMARY:");
-//        System.out.println(sandwich);
-//        System.out.println(chips);
-//        System.out.println(drink);
-//        System.out.println("TOTAL: " + order.calculateTotal());
 
 
 
