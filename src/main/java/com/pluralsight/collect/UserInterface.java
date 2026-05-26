@@ -16,19 +16,24 @@ public class UserInterface {
 
         boolean running = true;
         do {
-            MenuStrings.mainMenuDisplay();
-            System.out.println("What can I get started with you? ");
-            int input = Integer.parseInt(scanner.nextLine());
-            switch (input) {
-                case 1:
-                    orderScreen();
-                    break;
-                case 0:
-                    exit();
-                    running = false;
-                    break;
-                default:
-                    System.err.printf("Invalid input: %s. Try again.", input);
+
+            try {
+                MenuStrings.mainMenuDisplay();
+                System.out.println("What can I get started with you? ");
+                int input = Integer.parseInt(scanner.nextLine());
+                switch (input) {
+                    case 1:
+                        orderScreen();
+                        break;
+                    case 0:
+                        exit();
+                        running = false;
+                        break;
+                    default:
+                        System.err.printf("Invalid input: %s. Try again.", input);
+                }
+            } catch (NumberFormatException e) {
+                System.err.println("This is New York, we move fast. Stop wasting our time and type a number!");
             }
         } while (running);
     }
@@ -37,58 +42,60 @@ public class UserInterface {
         Order order = new Order();
 
         boolean running = true;
-
         do {
+            try {
 
-            MenuStrings.orderMenuDisplay();
+                MenuStrings.orderMenuDisplay();
 
-            System.out.println("What would you like? ");
+                System.out.println("What would you like? ");
 
-            int input = Integer.parseInt(scanner.nextLine());
+                int input = Integer.parseInt(scanner.nextLine());
 
-            switch (input) {
-               //Each case makes an instance of an object and adds to the products arrayList, if it was not null.
-                case 1:
-                    Product sandwich = createASandwichOrder();
+                switch (input) {
+                    //Each case makes an instance of an object and adds to the products arrayList, if it was not null.
+                    case 1:
+                        Product sandwich = createASandwichOrder();
 
-                    if (sandwich != null) {
-                        order.addProduct(sandwich);
-                        System.out.println("Sandwich is successfully added to your cart.");
-                    }
-                    break;
-                case 2:
-                    Drink drink = createADrinkOrder();
+                        if (sandwich != null) {
+                            order.addProduct(sandwich);
+                            System.out.println("Sandwich is successfully added to your cart.");
+                        }
+                        break;
+                    case 2:
+                        Drink drink = createADrinkOrder();
 
-                    if (drink != null) {
-                        order.addProduct(drink);
-                        System.out.println("Drink is successfully added to your cart.");
-                    }
-                    break;
-                case 3:
-                    Chips chips = createAChipsOrder();
+                        if (drink != null) {
+                            order.addProduct(drink);
+                            System.out.println("Drink is successfully added to your cart.");
+                        }
+                        break;
+                    case 3:
+                        Chips chips = createAChipsOrder();
 
-                    if (chips != null) {
-                        order.addProduct(chips);
-                        System.out.println("Chips is successfully added to your cart.");
-                    }
-                    break;
-                case 4:
-                    checkout(order);
+                        if (chips != null) {
+                            order.addProduct(chips);
+                            System.out.println("Chips is successfully added to your cart.");
+                        }
+                        break;
+                    case 4:
+                        checkout(order);
+                        break;
+                    case 0:
+                        cancelOrder(order);
+                        running = false;
 
-                    break;
-                case 0:
-                    cancelOrder(order);
-                    running = false;
-
-                    break;
-                default:
-                    System.err.printf("Invalid input: %s. Try again.", input);
+                        break;
+                    default:
+                        System.err.printf("Invalid input: %s. Try again.", input);
+                }
+            } catch (NumberFormatException e) {
+                System.err.println("Bro the bodega cat is judging you right now. TYPE. A. NUMBER.");
             }
         } while (running);
     }
 
     public Product createASandwichOrder() {
-     //todo: Ask David if it's better to make a method for this. CreateASandwich class?
+        //todo: Ask David if it's better to make a method for this. CreateASandwich class?
 
         //For making the Sandwich base
         SandwichSize size = chooseSandwichSize();
@@ -98,12 +105,14 @@ public class UserInterface {
 
         //Making an instance of meat through the method chooseAMeat(size) and adding it to the ArrayList of products
         Meat meat = chooseAMeat(size);
-        sandwich.addIngredient(meat);
-
+        if (meat != null) {
+            sandwich.addIngredient(meat);
+        }
         //Same with Cheese
         Cheese cheese = chooseACheese(size);
-        sandwich.addIngredient(cheese);
-
+        if (cheese != null) {
+            sandwich.addIngredient(cheese);
+        }
         //Making a Hashset for toppings because it helps for duplication and separates from the list pf products since user can order multiple toppings.
         HashSet<RegularTopping> regularToppings = chooseRegularToppings();
         for (RegularTopping i : regularToppings) {
@@ -129,6 +138,10 @@ public class UserInterface {
 
         String side = chooseFromMenu("Choose a side: ", sides);
 
+        if (side == null) {
+            return null;
+        }
+
         return new Side(side);
     }
 
@@ -137,6 +150,10 @@ public class UserInterface {
         String[] sauces = {"Mayo", "Mustard", "Ketchup", "Ranch", "Thousand Islands", "Vinaigrette"};
 
         String sauce = chooseFromMenu("Choose your sauce: ", sauces);
+
+        if (sauce == null) {
+            return null;
+        }
 
         return new Sauce(sauce);
     }
@@ -160,20 +177,11 @@ public class UserInterface {
                 running = false;
             }
 
-            boolean duplicate = false;
-
-            for (RegularTopping t : toppingsList) {
-                if (topping.equalsIgnoreCase(t.getName())) {
-                    System.err.printf("Yo, what's up with the %s? Try again.\n", t.getName());
-
-                    duplicate = true;
-                    break;
+            if(!topping.isBlank()) {
+                boolean added = toppingsList.add(new RegularTopping(topping));
+                if(!added) {
+                    System.err.printf("Yo, what's up with your %s? Try another topping.", topping);
                 }
-            }
-
-            //if not a duplicated, add it to a new instance of RegularTopping
-            if (!duplicate) {
-                toppingsList.add(new RegularTopping(topping));
             }
 
             System.out.println("Do you want to add another topping? (y/n)");
@@ -194,65 +202,72 @@ public class UserInterface {
 
         String cheese = chooseFromMenu("Pick your cheese", kindOfCheese);
 
-        //if input is not null, return the instance of Cheese, otherwise, return null
-        if (cheese != null) {
-
-            System.out.printf("Do you want extra of %s? y/n", cheese);
-
-            boolean isExtra = scanner.nextLine().equalsIgnoreCase("y");
-
-            return new Cheese(cheese, size, isExtra);
+        if (cheese == null) {
+            return null;
         }
 
-        return null;
+        System.out.printf("Do you want extra of %s? (y/n):", cheese);
 
+        boolean isExtra = scanner.nextLine().equalsIgnoreCase("y");
+
+        return new Cheese(cheese, size, isExtra);
     }
 
     public Boolean isToasted() {
-        System.out.println("Would you like the sandwich toasted? (y/n)");
+        System.out.println("Would you like the sandwich toasted? (y/n):");
         String toasted = scanner.nextLine();
 
-        return toasted.equalsIgnoreCase("Yes");
+        if(toasted.equalsIgnoreCase("y")) {
+            return true;
+        } else if(toasted.equalsIgnoreCase("n")) {
+            return false;
+        } else {
+            System.err.println("Invalid input, Please enter 'y' or 'n'");
+            return isToasted();
+        }
     }
 
     public SandwichSize chooseSandwichSize() {
-        boolean running = true;
-
         SandwichSize sandwichSize = null;
+        try {
+            boolean running = true;
 
-        do {
 
-            System.out.println("Sandwich size: (4, 8, 12)");
-            int size = Integer.parseInt(scanner.nextLine());
+            do {
 
-            switch (size) {
-                case 4:
-                    sandwichSize = SandwichSize.FOUR_INCH;
-                    running = false;
-                    break;
-                case 8:
-                    sandwichSize = SandwichSize.EIGHT_INCH;
-                    running = false;
-                    break;
-                case 12:
-                    sandwichSize = SandwichSize.TWELVE_INCH;
-                    running = false;
-                    break;
-                default:
-                    System.err.println("Invalid input. Please choose and type the available sizes: 4, 8, or 12 inches.");
-                    break;
+                System.out.println("Sandwich size: (4, 8, 12)");
+                int size = Integer.parseInt(scanner.nextLine());
 
-            }
-        } while (running);
+                switch (size) {
+                    case 4:
+                        sandwichSize = SandwichSize.FOUR_INCH;
+                        running = false;
+                        break;
+                    case 8:
+                        sandwichSize = SandwichSize.EIGHT_INCH;
+                        running = false;
+                        break;
+                    case 12:
+                        sandwichSize = SandwichSize.TWELVE_INCH;
+                        running = false;
+                        break;
+                    default:
+                        System.err.println("Invalid input. Please choose and type the available sizes: 4, 8, or 12 inches.");
+                        break;
+
+                }
+            } while (running);
+        } catch (NumberFormatException e) {
+            System.err.println("Yo, type a number!");
+        }
 
         return sandwichSize;
     }
 
     public BreadType chooseBreadType() {
+        BreadType breadType = null;
 
         boolean running = true;
-        BreadType breadType = null;
-//        //todo clean the default err message it should show BEFORE the prompt if the user typed invalid input
         do {
             System.out.println("Select your bread: (Whole, Wheat, Wrap, or Rye) ");
             String bread = scanner.nextLine().toUpperCase();
@@ -289,13 +304,13 @@ public class UserInterface {
 
         String meat = chooseFromMenu("Choose your protein", meats);
 
-        if (meat != null) {
-            System.out.printf("Do you want extra of %s? y/n", meat);
-            boolean isExtra = scanner.nextLine().equalsIgnoreCase("y");
-            return new Meat(meat, size, isExtra);
+        if (meat == null) {
+            return null;
         }
 
-        return null;
+        System.out.printf("Do you want extra of %s? (y/n):", meat);
+        boolean isExtra = scanner.nextLine().equalsIgnoreCase("y");
+        return new Meat(meat, size, isExtra);
     }
 
     //HELPER METHOD: Going back to Sides and Sauces, made a method instead of repeating the logic.
@@ -364,14 +379,13 @@ public class UserInterface {
 
         String input = scanner.nextLine();
 
-        if(input.equalsIgnoreCase("y")) {
+        if (input.equalsIgnoreCase("y")) {
             order.completeOrder();
-            System.out.println("Order places successfully! Thank you!");
-        } else if(input.equalsIgnoreCase("x")) {
+            System.out.println("Order placed successfully! Thank you!");
+        } else if (input.equalsIgnoreCase("x")) {
             cancelOrder(order);
             System.out.println("Order is canceled.");
-        }
-        else {
+        } else {
             System.out.println("Returning to the menu...");
         }
     }
