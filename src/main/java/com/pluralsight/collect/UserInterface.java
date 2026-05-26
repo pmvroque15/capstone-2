@@ -113,6 +113,10 @@ public class UserInterface {
                             System.out.println("BLT sandwich is successfully added to your cart.");
                         break;
                     case "PHILLY":
+                        PhillyCheeseSteak phillyCheeseSteak = new PhillyCheeseSteak();
+
+                        order.addProduct(phillyCheeseSteak);
+                        System.out.println("Philly Cheese Steak sandwich is successfully added to your cart.");
                         break;
                     case "0":
                         runnning = false;
