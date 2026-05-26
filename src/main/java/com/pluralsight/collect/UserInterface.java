@@ -384,10 +384,19 @@ public class UserInterface {
         if(input.equalsIgnoreCase("n")) {
             order.setAmount(0);
         } else if(input.equalsIgnoreCase("y")) {
-            System.out.println("Tip:  $");
-            double inputTip = Double.parseDouble(scanner.nextLine());
-            order.setAmount(inputTip);
-            System.out.println("Tip added to the total!");
+            boolean isValid = false;
+            do {
+                try {
+                    System.out.println("Tip:  $");
+                    double inputTip = Double.parseDouble(scanner.nextLine().trim());
+                    order.setAmount(inputTip);
+
+                    System.out.println("Tip added to the total!");
+                    isValid = true;
+                } catch (NumberFormatException e) {
+                    System.err.println("Invalid input. Try again.");;
+                }
+            } while (!isValid);
         }
     }
     public void checkout(Order order) {
