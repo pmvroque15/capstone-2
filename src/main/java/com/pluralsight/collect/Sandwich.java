@@ -27,20 +27,11 @@ public class Sandwich implements Product {
         return size;
     }
 
-    public BreadType getBreadType() {
-        return breadType;
-    }
-
     public void addIngredient(Product ingredient) {
+        if(ingredient == null) {
+            return;
+        }
         ingredients.add(ingredient);
-    }
-
-    public void removeIngredient(Product ingredient) {
-        ingredients.remove(ingredient);
-    }
-
-    public HashSet<Product> getIngredients() {
-        return ingredients;
     }
 
     @Override
@@ -98,12 +89,10 @@ public class Sandwich implements Product {
             if (p.isExtra()) {
                 sb.append(" (extra)");
             }
+
             sb.append("\n");
 
-
         }
-        sb.append("--------------------------------------");
-
         //returns to the toString of sb object!
         return sb.toString();
     }

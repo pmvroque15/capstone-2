@@ -380,6 +380,9 @@ public class UserInterface {
         String input = scanner.nextLine();
 
         if (input.equalsIgnoreCase("y")) {
+            if(!order.isValid()) {
+                System.err.println("To checkout, you must order either chips or a drink.");
+            }
             order.completeOrder();
             System.out.println("Order placed successfully! Thank you!");
         } else if (input.equalsIgnoreCase("x")) {

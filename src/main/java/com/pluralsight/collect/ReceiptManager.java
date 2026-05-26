@@ -24,9 +24,6 @@ public class ReceiptManager {
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename));
 
-            bufferedWriter.write("================ ORDER RECEIPT ===============\n");
-            bufferedWriter.write("             DELICIOUS SANDWICHES \n");
-            bufferedWriter.write("==============================================\n");
             bufferedWriter.write(order.toString());
 
             bufferedWriter.close();
@@ -36,4 +33,6 @@ public class ReceiptManager {
             System.err.println("I/O error while saving receipt");
         }
     }
+
+
 }
