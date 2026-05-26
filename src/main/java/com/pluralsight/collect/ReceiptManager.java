@@ -8,11 +8,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ReceiptManager {
-    private File currentReceiptFile;
     private final Order order;
     private static final String DIRECTORY_PATH = "src/main/resources/receipts/";
     private static final String EXTENSION_FILE = ".txt";
-    private static String filename = "";
+    private String filename = "";
     public ReceiptManager(Order order) {
         this.order = order;
     }
@@ -35,15 +34,18 @@ public class ReceiptManager {
         }
     }
 
-    public void deleteCurrentReceipt() {
+    public void deleteReceipt() {
+        if (filename != null && !filename.isEmpty()) {
+            File file = new File(filename);
 
-        if(currentReceiptFile != null && currentReceiptFile.exists()) {
-
-            boolean wasDeleted = currentReceiptFile.delete();
-
-            if(wasDeleted) {
-                System.out.println("Receipt deleted.");
+            if(file.exists()) {
+                if (file.delete()) {
+                    System.out.println("Receipt file deleted.");
+                }
+            } else {
+                System.out.println("Failed to delete receipt file.");
             }
         }
+        filename = "";
     }
 }

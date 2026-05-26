@@ -368,12 +368,11 @@ public class UserInterface {
     }
 
     public void cancelOrder(Order order) {
-
         ReceiptManager receiptManager = new ReceiptManager(order);
-//todo ask David how to delete a file
-    //        receiptManager.deleteCurrentReceipt();
 
-        order.cancelOrder();
+        receiptManager.deleteReceipt();
+        order.clearProducts();
+        System.out.println("Order is canceled.");
 
     }
     public void addTips(Order order) {
@@ -400,20 +399,25 @@ public class UserInterface {
         }
     }
     public void checkout(Order order) {
+        if(order.getProducts().isEmpty()) {
+            System.err.println("Your cart is empty. Add an item to proceed.");
+            return;
+        }
         addTips(order);
         System.out.println(order);
         System.out.println("Place your order? Type \"y\" to check out, \"n\" to go back to the menu, \"x\" to cancel the order.");
         String input = scanner.nextLine();
 
         if (input.equalsIgnoreCase("y")) {
+
             if(!order.isValid()) {
                 System.err.println("To checkout, you must order either chips or a drink.");
             }
             order.completeOrder();
             System.out.println("Order placed successfully! Thank you!");
+
         } else if (input.equalsIgnoreCase("x")) {
             cancelOrder(order);
-            System.out.println("Order is canceled.");
         } else {
             System.out.println("Returning to the menu...");
         }

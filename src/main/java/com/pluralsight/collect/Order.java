@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Order {
-    //todo Product, Sandwich, and Order class need refactoring on organization of saving in arraylists.
     private final ArrayList<Product> products = new ArrayList<>();
     private final LocalDateTime orderTime;
     private double amount;
@@ -21,11 +20,11 @@ public class Order {
         return this.orderTime;
     }
 
-    public void removeProduct(Product product) {
-        products.remove(product);
+    public ArrayList<Product> getProducts(){
+        return products;
     }
 
-    public void cancelOrder() {
+    public void clearProducts() {
         products.clear();
     }
 
