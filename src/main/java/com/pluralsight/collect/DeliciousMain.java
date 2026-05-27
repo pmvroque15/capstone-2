@@ -6,71 +6,15 @@ import java.util.HashSet;
 
 public class DeliciousMain {
     public static void main(String[] args) {
-       Sandwich sandwich = new Sandwich(SandwichSize.TWELVE_INCH, BreadType.WHOLE, false);
-       Meat meat2 = new Meat("Steak", SandwichSize.FOUR_INCH,true);
-//        System.out.println(meat2);
-       Cheese cheese = new Cheese("Provolone", SandwichSize.FOUR_INCH,true);
-//        System.out.println(cheese);
-       RegularTopping lettuce = new RegularTopping("lettuce");
-       RegularTopping tomato = new RegularTopping("tomato");
-//        System.out.println(tomato);
-        Sauce sauce = new Sauce("Mayo");
-//        System.out.println(sauce);
-//       Chips chips = new Chips("Cheetos");
-       Drink drink = new Drink(DrinkSize.MEDIUM);
-       sandwich.addIngredient(meat2);
-       sandwich.addIngredient(cheese);
-       sandwich.addIngredient(lettuce);
-       sandwich.addIngredient(tomato);
-       sandwich.addIngredient(sauce);
+//     UserInterface ui = new UserInterface();
+//
+//     ui.display();
+
+        PhillyCheeseSteak BLT = new PhillyCheeseSteak();
         Order order = new Order();
-        Chips chips = new Chips();
 
-        order.addProduct(chips);
-        order.addProduct(sandwich);
-        order.addProduct(drink);
+        order.addProduct(BLT);
+
         System.out.println(order);
-
-
-
-
-
-
-
-//       Sandwich sandwich2 = new Sandwich(
-//               SandwichSize.EIGHT_INCH,
-//               BreadType.WHEAT,
-//               true
-//       );
-//
-//       Ingredient turkey = new Meat("Turkey", false);
-//       Ingredient bacon = new Meat("Bacon", true);
-//       Ingredient swiss = new Cheese("Swiss", false);
-//       Ingredient onions = new RegularTopping("Onions");
-//       Ingredient peppers = new RegularTopping("Peppers");
-//
-//       sandwich2.addIngredient(turkey);
-//       sandwich2.addIngredient(bacon);
-//       sandwich2.addIngredient(swiss);
-//       sandwich2.addIngredient(onions);
-//       sandwich2.addIngredient(peppers);
-//
-//       Drink drink2 = new Drink(DrinkSize.SMALL, "Sprite");
-//       Chips chips2 = new Chips("Doritos");
-//
-//
-//       Order order = new Order();
-//
-//       order.addSandwich(sandwich);
-//       order.addChips(chips);
-//       order.addDrink(drink);
-//       order.addSandwich(sandwich2);
-//       order.addDrink(drink2);
-//       order.addChips(chips2);
-//
-//       order.completeOrder();
-
-
-
-    }
+        }
 }

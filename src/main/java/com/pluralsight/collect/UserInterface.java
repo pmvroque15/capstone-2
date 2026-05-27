@@ -307,10 +307,10 @@ public class UserInterface {
 
         boolean running = true;
         do {
-            System.out.println("Select your bread: (Whole, Wheat, Wrap, or Rye) ");
+            System.out.println("Select your bread: (Whole, White, Wrap, or Rye) ");
             String bread = scanner.nextLine().toUpperCase();
             switch (bread) {
-                case "WHEAT":
+                case "WHITE":
                     breadType = BreadType.WHITE;
                     running = false;
                     break;
@@ -445,7 +445,7 @@ public class UserInterface {
             return;
         }
 
-        if(order.getAmount() == 0) {
+        if (order.getAmount() == 0) {
             addTips(order);
         }
 

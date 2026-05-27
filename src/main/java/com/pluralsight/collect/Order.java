@@ -43,8 +43,12 @@ public class Order {
         this.amount = amount;
     }
 
+    public double addTax(double subtotal) {
 
-    public double calculateTotal() {
+        return subtotal * 0.008875;
+    }
+
+    public double subTotal() {
 
         double total = 0;
 
@@ -62,6 +66,10 @@ public class Order {
         return total;
     }
 
+    public double calculateTotal() {
+        return subTotal() + addTax(subTotal());
+    }
+
     @Override
     public String toString() {
 
@@ -71,7 +79,7 @@ public class Order {
         sb.append("       \"Built Different. Stacked right.\"\n");
         sb.append("       123 Main street | (123) 456-3456   \n");
         sb.append("==============================================\n");
-
+        sb.append("ORDER NO.").append((int) (Math.random() * 100)).append("\n\n");
         for (Product p : products) {
             if (p instanceof Sandwich sandwich) {
                 sb.append(sandwich);
@@ -86,11 +94,13 @@ public class Order {
             if (p instanceof Chips chips) {
                 sb.append(chips).append("\n");
             }
-
         }
         sb.append("----------------------------------------------\n");
         sb.append(String.format("TIP:                                     $%.2f\n", getAmount()));
+        sb.append(String.format("SUBTOTAL:                               $%.2f\n", subTotal()));
+        sb.append(String.format("TAX:                                     $%.2f\n", addTax(subTotal())));
         sb.append(String.format("TOTAL:                                  $%.2f\n", calculateTotal()));
+
 
         return sb.toString();
     }

@@ -23,16 +23,6 @@ public class RegularTopping implements Product {
     }
 
     @Override
-    public String toString() {
-        return String.format("Regular Topping: %s%nPRICE: $%.2f%n", getName(), calculatePrice());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
-    }
-
-    @Override
     // reference: https://www.geeksforgeeks.org/java/override-equalsobject-hashcode-method/
     public boolean equals(Object obj) {
         //"this" refers to the current object inside the equals parameters
