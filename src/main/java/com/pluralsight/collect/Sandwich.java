@@ -8,9 +8,6 @@ public class Sandwich implements Product {
     final HashSet<Product> ingredients = new HashSet<>();
     boolean isToasted;
 
-    public Sandwich() {
-    }
-
     public Sandwich(SandwichSize sandwichSize, BreadType breadType, boolean isToasted) {
         this.sandwichSize = sandwichSize;
         this.breadType = breadType;

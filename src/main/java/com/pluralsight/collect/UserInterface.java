@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
-    //todo make defensive coding on each prompts
+
     private final Scanner scanner = new Scanner(System.in);
     private Order order;
 
@@ -21,7 +21,7 @@ public class UserInterface {
             try {
                 MenuStrings.mainMenuDisplay();
                 System.out.println("What can I get started with you? ");
-                int input = Integer.parseInt(scanner.nextLine());
+                int input = Integer.parseInt(scanner.nextLine().trim());
                 switch (input) {
                     case 1:
                         orderScreen();
@@ -50,7 +50,7 @@ public class UserInterface {
 
                 System.out.println("What would you like? ");
 
-                int input = Integer.parseInt(scanner.nextLine());
+                int input = Integer.parseInt(scanner.nextLine().trim());
 
                 switch (input) {
                     //Each case makes an instance of an object and adds to the products arrayList, if it was not null.
@@ -105,25 +105,25 @@ public class UserInterface {
             try {
 
                 MenuStrings.signaturesSandwichesDisplay();
-                String input = scanner.nextLine();
+                String input = scanner.nextLine().trim().toUpperCase();
                 switch (input) {
                     case "BLT":
                         BLTSandwich bltSandwich = new BLTSandwich();
 
-                        order.addProduct(bltSandwich);
+                        order.addProduct(bltSandwich.addBLT());
                         System.out.println("BLT sandwich is successfully added to your cart.");
                         break;
                     case "PHILLY":
                         PhillyCheeseSteak phillyCheeseSteak = new PhillyCheeseSteak();
 
-                        order.addProduct(phillyCheeseSteak);
+                        order.addProduct(phillyCheeseSteak.addPhilly());
                         System.out.println("Philly Cheese Steak sandwich is successfully added to your cart.");
                         break;
                     case "0":
                         runnning = false;
                         break;
                     default:
-                        System.err.println("ERROR");
+                        System.err.println("Invalid input. Try again.");
 
                 }
             } catch (InputMismatchException e) {
@@ -410,6 +410,7 @@ public class UserInterface {
 
         receiptManager.deleteReceipt();
         order.clearProducts();
+
         System.out.println("Order is canceled.");
 
     }
@@ -449,10 +450,6 @@ public class UserInterface {
         String input = scanner.nextLine();
 
         if (input.equalsIgnoreCase("y")) {
-
-            if (!order.isValid()) {
-                System.err.println("To checkout, you must order either chips or a drink.");
-            }
             order.completeOrder();
             System.out.println("Order placed successfully! Thank you!");
 
