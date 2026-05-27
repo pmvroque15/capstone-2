@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class UserInterface {
 
     private final Scanner scanner = new Scanner(System.in);
-    private Order order;
+    Order order;
 
     public void display() {
         homeScreen();
@@ -408,9 +408,9 @@ public class UserInterface {
     }
 
     public void cancelOrder(Order order) {
-        ReceiptManager receiptManager = new ReceiptManager(order);
 
-        receiptManager.deleteReceipt();
+
+        ReceiptManager.deleteReceipt();
         order.clearProducts();
 
         System.out.println("Order is canceled.");
@@ -456,7 +456,7 @@ public class UserInterface {
         String input = scanner.nextLine();
 
         if (input.equalsIgnoreCase("y")) {
-            order.completeOrder();
+            order.completeOrder(order);
             System.out.println("Order placed successfully! Thank you!");
 
         } else if (input.equalsIgnoreCase("x")) {

@@ -29,10 +29,8 @@ public class Order {
         products.clear();
     }
 
-    public void completeOrder() {
-        ReceiptManager receiptManager = new ReceiptManager(this);
-
-        receiptManager.saveReceipt();
+    public void completeOrder(Order order) {
+        ReceiptManager.saveReceipt(order);
     }
 
     public double getAmount() {
@@ -96,9 +94,9 @@ public class Order {
             }
         }
         sb.append("----------------------------------------------\n");
-        sb.append(String.format("TIP:                                     $%.2f\n", getAmount()));
+        sb.append(String.format("TIP:                                    $%.2f\n", getAmount()));
         sb.append(String.format("SUBTOTAL:                               $%.2f\n", subTotal()));
-        sb.append(String.format("TAX:                                     $%.2f\n", addTax(subTotal())));
+        sb.append(String.format("TAX:                                    $%.2f\n", addTax(subTotal())));
         sb.append(String.format("TOTAL:                                  $%.2f\n", calculateTotal()));
 
 

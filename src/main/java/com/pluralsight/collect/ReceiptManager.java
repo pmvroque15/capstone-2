@@ -8,15 +8,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class  ReceiptManager {
-    private final Order order;
+    private static Order order;
     private static final String DIRECTORY_PATH = "src/main/resources/receipts/";
     private static final String EXTENSION_FILE = ".txt";
-    private String filename = "";
-    public ReceiptManager(Order order) {
-        this.order = order;
+    private static String filename = "";
+    public ReceiptManager() {
     }
 
-    public void saveReceipt() {
+    public static void saveReceipt(Order order) {
         LocalDateTime orderTime = order.getOrderTime();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss");
         filename = DIRECTORY_PATH + orderTime.format(dateTimeFormatter) + EXTENSION_FILE;
@@ -34,7 +33,7 @@ public class  ReceiptManager {
         }
     }
 
-    public void deleteReceipt() {
+    public static void deleteReceipt() {
         if (filename != null && !filename.isEmpty()) {
             File file = new File(filename);
 
