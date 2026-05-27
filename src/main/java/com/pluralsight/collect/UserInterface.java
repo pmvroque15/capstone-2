@@ -109,14 +109,14 @@ public class UserInterface {
                 switch (input) {
                     case "BLT":
                         BLTSandwich bltSandwich = new BLTSandwich();
+                        order.addProduct(bltSandwich);
 
-                        order.addProduct(bltSandwich.addBLT());
                         System.out.println("BLT sandwich is successfully added to your cart.");
                         break;
                     case "PHILLY":
                         PhillyCheeseSteak phillyCheeseSteak = new PhillyCheeseSteak();
 
-                        order.addProduct(phillyCheeseSteak.addPhilly());
+                        order.addProduct(phillyCheeseSteak);
                         System.out.println("Philly Cheese Steak sandwich is successfully added to your cart.");
                         break;
                     case "0":

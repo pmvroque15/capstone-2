@@ -10,10 +10,6 @@ public class PhillyCheeseSteak extends Sandwich{
 
     public PhillyCheeseSteak() {
         super(SandwichSize.EIGHT_INCH, BreadType.WHITE, true);
-
-    }
-
-    public PhillyCheeseSteak addPhilly() {
         super.addIngredient(new Meat("Steak", sandwichSize, false));
         super.addIngredient(new Cheese("American Cheese", sandwichSize, false));
         String[] philly = {"Peppers", "Mayo"};
@@ -21,18 +17,13 @@ public class PhillyCheeseSteak extends Sandwich{
             super.addIngredient(new RegularTopping(ingredient));
         }
 
-        return new PhillyCheeseSteak();
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("    PHILLY CHEESE STEAK SANDWICH\n");
-        sb.append("        ")
-                .append(getSize())
-                .append(" on ")
-                .append(this.breadType)
-                .append(" (Toasted)")
+        sb.append("PHILLY CHEESE STEAK SANDWICH\n");
+        sb.append(getSize()).append(" on ").append(this.breadType).append(" (Toasted)")
                 .append("\n");
 
         //looping through hashset of ingredients and appending it to the sb object.
@@ -44,9 +35,7 @@ public class PhillyCheeseSteak extends Sandwich{
 
             String name = p.getName();
 
-            sb.append("                  -")
-                    .append(name)
-                    .append("\n");
+            sb.append(String.format("  - %-30s %5.2f",name, p.calculatePrice())).append("\n");
 
         }
         //returns to the toString of sb object!

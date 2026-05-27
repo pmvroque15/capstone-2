@@ -11,20 +11,15 @@ public class BLTSandwich extends Sandwich{
 
     public BLTSandwich() {
         super(SandwichSize.EIGHT_INCH, BreadType.WHITE, true);
-
-
-    }
-
-    public BLTSandwich addBLT() {
-       super.addIngredient(new Meat("Bacon", sandwichSize, false));
-       super.addIngredient(new Cheese("Cheddar", sandwichSize, false));
+        super.addIngredient(new Meat("Bacon", sandwichSize, false));
+        super.addIngredient(new Cheese("Cheddar", sandwichSize, false));
         String[] BLT = {"Lettuce", "Tomatoes", "Pickles", "Ranch"};
         for(String ingredient: BLT) {
             super.addIngredient(new RegularTopping(ingredient));
         }
 
-        return new BLTSandwich();
     }
+
 
     @Override
     public String toString() {

@@ -23,9 +23,9 @@ public class DeliciousMain {
 //       sandwich.addIngredient(lettuce);
 //       sandwich.addIngredient(tomato);
 //
-      UserInterface ui = new UserInterface();
+      PhillyCheeseSteak phillyCheeseSteak = new PhillyCheeseSteak();
 
-      ui.display();
+        System.out.println(phillyCheeseSteak);
 
 
 
