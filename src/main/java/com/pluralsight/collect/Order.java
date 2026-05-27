@@ -6,11 +6,9 @@ import java.util.ArrayList;
 public class Order {
     private final ArrayList<Product> products = new ArrayList<>();
     private final LocalDateTime orderTime;
-    private double amount;
-
+    private double tipsAmount = 0;
     public Order() {
         this.orderTime = LocalDateTime.now();
-
     }
 
     public void addProduct(Product product) {
@@ -33,25 +31,26 @@ public class Order {
         ReceiptManager.saveReceipt(order);
     }
 
-    public double getAmount() {
-        return this.amount;
+    public void setTipsAmount(double tipsAmount) {
+        this.tipsAmount = tipsAmount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public double getTipsAmount() {
+        return tipsAmount;
     }
 
-    public double addTax(double subtotal) {
+    public double calculateTax(double subtotal) {
+        double tax = 0.008875;
 
-        return subtotal * 0.008875;
+        return subtotal * tax;
     }
 
     public double subTotal() {
 
         double total = 0;
 
-        if (amount != 0) {
-            total += amount;
+        if (this.tipsAmount != 0) {
+            total += getTipsAmount();
         }
 
         for (Product p : products) {
@@ -65,12 +64,11 @@ public class Order {
     }
 
     public double calculateTotal() {
-        return subTotal() + addTax(subTotal());
+        return subTotal() + calculateTax(subTotal()) + this.tipsAmount;
     }
 
     @Override
     public String toString() {
-
         StringBuilder sb = new StringBuilder();
         sb.append("================ ORDER RECEIPT ===============\n");
         sb.append("           DELIcious Sandwiches 24/7 \n");
@@ -94,9 +92,9 @@ public class Order {
             }
         }
         sb.append("----------------------------------------------\n");
-        sb.append(String.format("TIP:                                    $%.2f\n", getAmount()));
+        sb.append(String.format("TIP:                                    $%.2f\n", this.tipsAmount));
         sb.append(String.format("SUBTOTAL:                               $%.2f\n", subTotal()));
-        sb.append(String.format("TAX:                                    $%.2f\n", addTax(subTotal())));
+        sb.append(String.format("TAX:                                    $%.2f\n", calculateTax(subTotal())));
         sb.append(String.format("TOTAL:                                  $%.2f\n", calculateTotal()));
 
 

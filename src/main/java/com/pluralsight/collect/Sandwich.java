@@ -86,9 +86,9 @@ public class Sandwich implements Product {
 
             //if extra ingredient, then append extra after the ingredient
             if (p.isExtra()) {
-                sb.append(String.format("  - EXTRA %-29s  %5.2f%n",name, p.calculatePrice()));
+                sb.append(String.format("  - EXTRA %-28s  %5.2f%n",name, p.calculatePrice()));
             } else {
-                sb.append(String.format("  - %-36s %5.2f%n",name, p.calculatePrice()));
+                sb.append(String.format("  - %-35s %5.2f%n",name, p.calculatePrice()));
             }
         }
         //returns to the toString of sb object!

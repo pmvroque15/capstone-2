@@ -417,20 +417,21 @@ public class UserInterface {
 
     }
 
+    //todo add this in the order class
     public void addTips(Order order) {
 
         System.out.println("Would you like to add a tip? (y/n):");
         String input = scanner.nextLine().trim();
 
         if (input.equalsIgnoreCase("n")) {
-            order.setAmount(0);
+            order.setTipsAmount(0);
         } else if (input.equalsIgnoreCase("y")) {
             boolean isValid = false;
             do {
                 try {
-                    System.out.println("Tip:  $");
-                    double inputTip = Double.parseDouble(scanner.nextLine().trim());
-                    order.setAmount(inputTip);
+                    System.out.print("Tip:  $");
+                    double tip = Double.parseDouble(scanner.nextLine().trim());
+                    order.setTipsAmount(tip);
 
                     System.out.println("Tip added to the total!");
                     isValid = true;
@@ -447,22 +448,33 @@ public class UserInterface {
             return;
         }
 
-        if (order.getAmount() == 0) {
+        if (order.getTipsAmount() == 0) {
             addTips(order);
         }
 
         System.out.println(order);
-        System.out.println("Place your order? Type \"y\" to check out, \"n\" to go back to the menu, \"x\" to cancel the order.");
-        String input = scanner.nextLine();
 
-        if (input.equalsIgnoreCase("y")) {
-            order.completeOrder(order);
-            System.out.println("Order placed successfully! Thank you!");
 
-        } else if (input.equalsIgnoreCase("x")) {
-            cancelOrder(order);
-        } else {
-            System.out.println("Returning to the menu...");
+        //todo validation of input user can press anything to go back
+        boolean valid = true;
+        while (valid) {
+            System.out.println("Place your order? Type \"y\" to check out, \"n\" to go back to the menu, \"x\" to cancel the order.");
+            String input = scanner.nextLine();
+
+                if (input.equalsIgnoreCase("y")) {
+                    order.completeOrder(order);
+                    System.out.println("Order placed successfully! Thank you!");
+                    valid = false;
+
+                } else if (input.equalsIgnoreCase("x")) {
+                    cancelOrder(order);
+                    valid = false;
+                } else if (input.equalsIgnoreCase("n")) {
+                    System.out.println("Returning to the menu...");
+                    valid = false;
+                } else {
+                    System.err.println("Invalid input. Try again.");
+                }
         }
     }
 }

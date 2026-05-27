@@ -35,7 +35,7 @@ public class PhillyCheeseSteak extends Sandwich{
 
             String name = p.getName();
 
-            sb.append(String.format("  - %-36s %5.2f",name, p.calculatePrice())).append("\n");
+            sb.append(String.format("  - %-35s %5.2f",name, p.calculatePrice())).append("\n");
 
         }
         //returns to the toString of sb object!
