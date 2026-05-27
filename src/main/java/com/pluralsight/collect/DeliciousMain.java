@@ -6,26 +6,30 @@ import java.util.HashSet;
 
 public class DeliciousMain {
     public static void main(String[] args) {
-//       Sandwich sandwich = new Sandwich(SandwichSize.TWELVE_INCH, BreadType.WHOLE, false);
-//       Sandwich meat2 = new Meat("Steak", SandwichSize.FOUR_INCH,true);
+       Sandwich sandwich = new Sandwich(SandwichSize.TWELVE_INCH, BreadType.WHOLE, false);
+       Meat meat2 = new Meat("Steak", SandwichSize.FOUR_INCH,true);
 //        System.out.println(meat2);
-//       Sandwich cheese = new Cheese("Provolone", SandwichSize.FOUR_INCH,true);
+       Cheese cheese = new Cheese("Provolone", SandwichSize.FOUR_INCH,true);
 //        System.out.println(cheese);
-//       Sandwich lettuce = new RegularTopping("lettuce");
-//       Sandwich tomato = new RegularTopping("tomato");
+       RegularTopping lettuce = new RegularTopping("lettuce");
+       RegularTopping tomato = new RegularTopping("tomato");
 //        System.out.println(tomato);
-//        Sandwich sauce = new Sauce("Mayo");
+        Sauce sauce = new Sauce("Mayo");
 //        System.out.println(sauce);
 //       Chips chips = new Chips("Cheetos");
-//       Drink drink = new Drink(DrinkSize.MEDIUM);
-//       sandwich.addIngredient(meat2);
-//       sandwich.addIngredient(cheese);
-//       sandwich.addIngredient(lettuce);
-//       sandwich.addIngredient(tomato);
-//
-      PhillyCheeseSteak phillyCheeseSteak = new PhillyCheeseSteak();
+       Drink drink = new Drink(DrinkSize.MEDIUM);
+       sandwich.addIngredient(meat2);
+       sandwich.addIngredient(cheese);
+       sandwich.addIngredient(lettuce);
+       sandwich.addIngredient(tomato);
+       sandwich.addIngredient(sauce);
+        Order order = new Order();
+        Chips chips = new Chips();
 
-        System.out.println(phillyCheeseSteak);
+        order.addProduct(chips);
+        order.addProduct(sandwich);
+        order.addProduct(drink);
+        System.out.println(order);
 
 
 

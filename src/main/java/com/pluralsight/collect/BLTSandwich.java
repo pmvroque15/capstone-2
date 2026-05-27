@@ -24,12 +24,8 @@ public class BLTSandwich extends Sandwich{
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("           BLT SANDWICH\n");
-        sb.append("          ")
-                .append(getSize())
-                .append(" on ")
-                .append(this.breadType)
-                .append(" (Toasted)")
+        sb.append("BLT SANDWICH\n");
+        sb.append(getSize()).append(" on ").append(this.breadType).append(" (Toasted)")
                 .append("\n");
 
         //looping through hashset of ingredients and appending it to the sb object.
@@ -41,9 +37,7 @@ public class BLTSandwich extends Sandwich{
 
             String name = p.getName();
 
-            sb.append("                  -")
-                    .append(name)
-                    .append("\n");
+            sb.append(String.format("  - %-30s %5.2f",name, p.calculatePrice())).append("\n");
 
         }
         //returns to the toString of sb object!

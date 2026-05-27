@@ -28,6 +28,6 @@ public class Drink implements Product {
     }
 
     public String toString(){
-        return String.format("\t   %s %s $%.2f", getDrinkSize(), getName(), calculatePrice());
+        return String.format("%s %-34s %.2f", getDrinkSize(), getName(), calculatePrice());
     }
 }

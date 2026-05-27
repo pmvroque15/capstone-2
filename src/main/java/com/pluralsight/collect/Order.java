@@ -70,28 +70,27 @@ public class Order {
         sb.append("           DELIcious Sandwiches 24/7 \n");
         sb.append("       \"Built Different. Stacked right.\"\n");
         sb.append("       123 Main street | (123) 456-3456   \n");
-        sb.append("==============================================\n\n");
+        sb.append("==============================================\n");
 
         for (Product p : products) {
             if (p instanceof Sandwich sandwich) {
-                sb.append("      ").append(sandwich).append("\n");
+                sb.append(sandwich);
             }
             if (p instanceof RegularTopping regularTopping) {
-                sb.append("   ").append(regularTopping).append("\n");
+                sb.append(regularTopping);
             }
             if (p instanceof Drink drink) {
-                sb.append("    ").append(drink).append("\n");
+                sb.append(drink).append("\n");
             }
 
             if (p instanceof Chips chips) {
-                sb.append("    ").append(chips).append("\n");
-
+                sb.append(chips).append("\n");
             }
 
         }
-        sb.append("-----------------------------------------------\n");
-        sb.append(String.format("TIP:                                      $%.2f\n", getAmount()));
-        sb.append(String.format("TOTAL:                                    $%.2f\n", calculateTotal()));
+        sb.append("----------------------------------------------\n");
+        sb.append(String.format("TIP:                                     $%.2f\n", getAmount()));
+        sb.append(String.format("TOTAL:                                  $%.2f\n", calculateTotal()));
 
         return sb.toString();
     }

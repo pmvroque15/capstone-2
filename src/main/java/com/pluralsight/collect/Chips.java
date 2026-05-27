@@ -20,6 +20,6 @@ public class Chips implements Product{
 
     @Override
     public String toString() {
-        return String.format("\t   %s $1.50", getName() );
+        return String.format("%-41s 1.50", getName());
     }
 }

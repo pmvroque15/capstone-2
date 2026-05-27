@@ -61,7 +61,7 @@ public class Sandwich implements Product {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("  ").append(getSize()).append(" on ").append(this.breadType);
+        sb.append(getSize()).append(" on ").append(this.breadType);
 
         //if it's not toasted, just leave it empty and move forward.
         if (isToasted) {
@@ -83,15 +83,13 @@ public class Sandwich implements Product {
                 continue;
             }
 
-            sb.append("           -")
-                    .append(name);
+
             //if extra ingredient, then append extra after the ingredient
             if (p.isExtra()) {
-                sb.append(" (extra)");
+                sb.append(String.format("  - EXTRA %-29s  %5.2f%n",name, p.calculatePrice()));
+            } else {
+                sb.append(String.format("  - %-36s %5.2f%n",name, p.calculatePrice()));
             }
-
-            sb.append("\n");
-
         }
         //returns to the toString of sb object!
         return sb.toString();
