@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class ReceiptManager {
+public class  ReceiptManager {
     private final Order order;
     private static final String DIRECTORY_PATH = "src/main/resources/receipts/";
     private static final String EXTENSION_FILE = ".txt";

@@ -99,7 +99,7 @@ public class UserInterface {
     }
 
     public void chooseASignatureSandwich(Order order) {
-        boolean runnning = true;
+        boolean running = true;
 
         do {
             try {
@@ -120,7 +120,7 @@ public class UserInterface {
                         System.out.println("Philly Cheese Steak sandwich is successfully added to your cart.");
                         break;
                     case "0":
-                        runnning = false;
+                        running = false;
                         break;
                     default:
                         System.err.println("Invalid input. Try again.");
@@ -129,7 +129,7 @@ public class UserInterface {
             } catch (InputMismatchException e) {
                 System.err.println("Invalid input. Try again.");
             }
-        } while (runnning);
+        } while (running);
     }
 
     public Product createASandwichOrder() {
@@ -138,7 +138,7 @@ public class UserInterface {
         //For making the Sandwich base
         SandwichSize size = chooseSandwichSize();
         BreadType breadType = chooseBreadType();
-        boolean isToasted = isToasted();
+        boolean isToasted = askIfToasted();
         Sandwich sandwich = new Sandwich(size, breadType, isToasted);
 
         //Making an instance of meat through the method chooseAMeat(size) and adding it to the ArrayList of products
@@ -211,15 +211,15 @@ public class UserInterface {
 
             String topping = chooseFromMenu("Pick a topping: ", toppings);
 
-            if (topping.isBlank()) {
+            if (topping == null) {
                 running = false;
-            }
-
-            if (!topping.isBlank()) {
+            } else {
                 boolean added = toppingsList.add(new RegularTopping(topping));
+
                 if (!added) {
                     System.err.printf("Yo, what's up with your %s? Try another topping.", topping);
                 }
+
             }
 
             System.out.println("Do you want to add another topping? (y/n)");
@@ -251,28 +251,28 @@ public class UserInterface {
         return new Cheese(cheese, size, isExtra);
     }
 
-    public Boolean isToasted() {
-        System.out.println("Would you like the sandwich toasted? (y/n):");
-        String toasted = scanner.nextLine();
+    public boolean askIfToasted() {
 
-        if (toasted.equalsIgnoreCase("y")) {
-            return true;
-        } else if (toasted.equalsIgnoreCase("n")) {
-            return false;
-        } else {
-            System.err.println("Invalid input, Please enter 'y' or 'n'");
-            return isToasted();
+        while (true) {
+            System.out.println("Would you like the sandwich toasted? (y/n):");
+            String toasted = scanner.nextLine();
+
+            if (toasted.equalsIgnoreCase("y")) {
+                return true;
+            } else if (toasted.equalsIgnoreCase("n")) {
+                return false;
+            } else {
+                System.err.println("Invalid input, Please enter 'y' or 'n'");
+            }
         }
     }
 
     public SandwichSize chooseSandwichSize() {
         SandwichSize sandwichSize = null;
-        try {
-            boolean running = true;
+        boolean running = true;
 
-
-            do {
-
+        do {
+            try {
                 System.out.println("Sandwich size: (4, 8, 12)");
                 int size = Integer.parseInt(scanner.nextLine());
 
@@ -293,11 +293,13 @@ public class UserInterface {
                         System.err.println("Invalid input. Please choose and type the available sizes: 4, 8, or 12 inches.");
                         break;
 
+
                 }
-            } while (running);
-        } catch (NumberFormatException e) {
-            System.err.println("Yo, type a number!");
-        }
+            } catch (NumberFormatException e) {
+                System.err.println("Yo, type a number!");
+            }
+        } while (running);
+
 
         return sandwichSize;
     }

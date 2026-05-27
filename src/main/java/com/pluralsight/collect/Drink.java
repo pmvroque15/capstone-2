@@ -1,8 +1,8 @@
 package com.pluralsight.collect;
 
 public class Drink implements Product {
-    private final DrinkSize drinkSize;
-    private double price = 0;
+    private DrinkSize drinkSize;
+    private double price;
     public Drink(DrinkSize drinkSize) {
         this.drinkSize = drinkSize;
         this.price = drinkSize.getPrice();
