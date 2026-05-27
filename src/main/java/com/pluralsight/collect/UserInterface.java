@@ -418,7 +418,7 @@ public class UserInterface {
     public void addTips(Order order) {
 
         System.out.println("Would you like to add a tip? (y/n):");
-        String input = scanner.nextLine();
+        String input = scanner.nextLine().trim();
 
         if (input.equalsIgnoreCase("n")) {
             order.setAmount(0);
@@ -444,7 +444,11 @@ public class UserInterface {
             System.err.println("Your cart is empty. Add an item to proceed.");
             return;
         }
-        addTips(order);
+
+        if(order.getAmount() == 0) {
+            addTips(order);
+        }
+
         System.out.println(order);
         System.out.println("Place your order? Type \"y\" to check out, \"n\" to go back to the menu, \"x\" to cancel the order.");
         String input = scanner.nextLine();
