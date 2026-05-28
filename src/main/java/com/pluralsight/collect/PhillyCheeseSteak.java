@@ -16,29 +16,5 @@ public class PhillyCheeseSteak extends Sandwich{
         for(String ingredient: philly) {
             super.addIngredient(new RegularTopping(ingredient));
         }
-
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("PHILLY CHEESE STEAK SANDWICH\n");
-        sb.append(getSize()).append(" on ").append(this.breadType).append(" (Toasted)")
-                .append("\n");
-
-        //looping through hashset of ingredients and appending it to the sb object.
-        for (Product p : ingredients) {
-
-            if (p == null) {
-                continue;
-            }
-
-            String name = p.getName();
-
-            sb.append(String.format("  - %-35s %5.2f",name, p.calculatePrice())).append("\n");
-
-        }
-        //returns to the toString of sb object!
-        return sb.toString();
     }
 }

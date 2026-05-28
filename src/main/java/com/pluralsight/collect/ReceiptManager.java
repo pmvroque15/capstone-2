@@ -8,17 +8,16 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class  ReceiptManager {
-    private static Order order;
     private static final String DIRECTORY_PATH = "src/main/resources/receipts/";
     private static final String EXTENSION_FILE = ".txt";
-    private static String filename = "";
+
     public ReceiptManager() {
     }
 
-    public static void saveReceipt(Order order) {
+    public static String saveReceipt(Order order) {
         LocalDateTime orderTime = order.getOrderTime();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss");
-        filename = DIRECTORY_PATH + orderTime.format(dateTimeFormatter) + EXTENSION_FILE;
+        String filename = DIRECTORY_PATH + orderTime.format(dateTimeFormatter) + EXTENSION_FILE;
 
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename));
@@ -31,9 +30,11 @@ public class  ReceiptManager {
         catch (IOException e) {
             System.err.println("I/O error while saving receipt");
         }
+
+        return filename;
     }
 
-    public static void deleteReceipt() {
+    public static void deleteReceipt(String filename) {
         if (filename != null && !filename.isEmpty()) {
             File file = new File(filename);
 

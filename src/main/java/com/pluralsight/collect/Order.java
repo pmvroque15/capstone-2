@@ -1,12 +1,15 @@
 package com.pluralsight.collect;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Order {
     private final ArrayList<Product> products = new ArrayList<>();
     private final LocalDateTime orderTime;
     private double tipsAmount = 0;
+    private static final double TAX_RATE_NYC = 0.08875;
+
     public Order() {
         this.orderTime = LocalDateTime.now();
     }
@@ -40,55 +43,53 @@ public class Order {
     }
 
     public double calculateTax(double subtotal) {
-        double tax = 0.008875;
 
-        return subtotal * tax;
+        return subtotal * TAX_RATE_NYC;
     }
 
     public double subTotal() {
 
-        double total = 0;
-
-        if (this.tipsAmount != 0) {
-            total += getTipsAmount();
-        }
+        double amount = 0;
 
         for (Product p : products) {
             if (p == null) {
                 continue;
             }
-            total += p.calculatePrice();
+            amount += p.calculatePrice();
         }
 
-        return total;
+        return amount;
     }
 
     public double calculateTotal() {
-        return subTotal() + calculateTax(subTotal()) + this.tipsAmount;
+        double tips = this.tipsAmount;
+        return subTotal() + calculateTax(subTotal()) + tips;
     }
 
     @Override
     public String toString() {
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("hh:mm");
+        int orderNumber = (int) (Math.random() * 100);
         StringBuilder sb = new StringBuilder();
         sb.append("================ ORDER RECEIPT ===============\n");
         sb.append("           DELIcious Sandwiches 24/7 \n");
         sb.append("       \"Built Different. Stacked right.\"\n");
         sb.append("       123 Main street | (123) 456-3456   \n");
         sb.append("==============================================\n");
-        sb.append("ORDER NO.").append((int) (Math.random() * 100)).append("\n\n");
+        sb.append(String.format("DATE: %-29s", getOrderTime().format(dateFormat)));
+        sb.append(String.format("TIME: %s", getOrderTime().format(timeFormat)));
+        sb.append("\n");
+        sb.append(String.format("ORDER #%-23d", orderNumber)).append("CASHIER: MANAGER\n");
+        sb.append("==============================================\n");
         for (Product p : products) {
-            if (p instanceof Sandwich sandwich) {
-                sb.append(sandwich);
-            }
-            if (p instanceof RegularTopping regularTopping) {
-                sb.append(regularTopping);
-            }
-            if (p instanceof Drink drink) {
-                sb.append(drink).append("\n");
-            }
+            if (p instanceof BLTSandwich) {
+                sb.append("BLT SANDWICH\n").append(p).append("\n");
+            } else if (p instanceof PhillyCheeseSteak) {
+                sb.append("PHILLY SANDWICH\n").append(p).append("\n");
+            } else {
+                sb.append(p).append("\n");
 
-            if (p instanceof Chips chips) {
-                sb.append(chips).append("\n");
             }
         }
         sb.append("----------------------------------------------\n");
@@ -96,7 +97,6 @@ public class Order {
         sb.append(String.format("SUBTOTAL:                               $%.2f\n", subTotal()));
         sb.append(String.format("TAX:                                    $%.2f\n", calculateTax(subTotal())));
         sb.append(String.format("TOTAL:                                  $%.2f\n", calculateTotal()));
-
 
         return sb.toString();
     }

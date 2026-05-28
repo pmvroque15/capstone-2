@@ -407,14 +407,12 @@ public class UserInterface {
         System.out.println("Thank you for using the app!");
     }
 
+    //todo move it to the Order class ?
     public void cancelOrder(Order order) {
 
-
-        ReceiptManager.deleteReceipt();
         order.clearProducts();
 
         System.out.println("Order is canceled.");
-
     }
 
     //todo add this in the order class
