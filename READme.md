@@ -1,0 +1,69 @@
+![bodega-shutterstock.jpg](utilities/images/bodega-shutterstock.jpg)
+# DELIcious Sandwich shop 24/7 (づ•ᴗ•)づᯓ 🥪
+
+---
+
+## Table of Contents 
+
+- [Overview](#Overview)
+- [Biggest Challenge](#biggest-challenge)
+- [Part/s I am proud of](#part/s-i-am-proud-of)
+- [Next steps?](#next-steps)
+
+---
+
+## Overview
+
+**DELI**cious Sandwiches is a JAVA CLI application that allows the customers to order their own customized sandwiches, drink, and chips!
+It also allows the user to confirm, checkout, and cancel the order. When it checks out, it saves the current receipt by its date and time that way transactions can be tracked and customers can have their own copy!
+
+---
+
+## Biggest Challenge 
+
+My biggest challenge in this project is applying OOP concept. Since this is my first time using this approach, it challenged me how to connect class and its methods, and relationship between the classes.
+
+**Building UML Diagram**
+
+First time making a UML diagram for a project, honestly it's fun to understand this flowchart and a great tool for structuring the capstone. 
+
+**Single Responsibility Principle**
+Since this is the first time learning OOP approach, they were tons of gaps that needs to be filled ever since we started tackling this concept. Thankfully, I have great support system in this class and of course David!
+
+--- 
+
+## What are the next steps...
+
+This capstone gave me more applications I want to do for my side projects. I actually want to continue this capstone on my free time to apply advance OOP concepts and make it robust and impactful application.
+
+---
+
+## Part/s I am proud of
+
+Honestly... the whole project. Pat on my back(no pun intended!)
+
+- Making a UML diagram. We didn't really go in depth of how to make one but I was curious so I made a whole research of how to make one and what purpose of each symbol on the list. From making on a paper to making flowcharts how classes are related to each other.
+
+from this
+
+[insert picture of the scratch papers]
+
+to this
+
+[insert the first UML diagram]
+
+to **THIS**
+
+[Final UML diagram]
+
+- Small detail but one of the things I learned throughout this process is being resourceful and using the resources and ACTUALLY UNDERSTANDING it line by line is actually nice to have. One special character I learned is 
+
+```java
+this
+```
+
+this special character is referring the current object being passed in the method parameters. I love learning these small details through out the process.
+
+- **ENUMS**
+
+It's 

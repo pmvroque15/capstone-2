@@ -3,9 +3,9 @@ package com.pluralsight.collect;
 import java.util.HashSet;
 
 public class Sandwich implements Product {
-    SandwichSize sandwichSize;
-    BreadType breadType;
-    final HashSet<Product> ingredients = new HashSet<>();
+    protected SandwichSize sandwichSize;
+    protected BreadType breadType;
+    HashSet<Product> ingredients = new HashSet<>();
     boolean isToasted;
 
     public Sandwich(SandwichSize sandwichSize, BreadType breadType, boolean isToasted) {

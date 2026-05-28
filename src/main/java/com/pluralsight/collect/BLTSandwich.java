@@ -10,9 +10,14 @@ package com.pluralsight.collect;
 public class BLTSandwich extends Sandwich{
     public BLTSandwich() {
         super(SandwichSize.EIGHT_INCH, BreadType.WHITE, true);
+    }
+
+    public void addDefaultIngredients() {
         super.addIngredient(new Meat("Bacon", sandwichSize, false));
         super.addIngredient(new Cheese("Cheddar", sandwichSize, false));
+
         String[] BLT = {"Lettuce", "Tomatoes", "Pickles", "Ranch"};
+
         for(String ingredient: BLT) {
             super.addIngredient(new RegularTopping(ingredient));
         }

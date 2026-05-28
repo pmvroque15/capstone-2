@@ -109,12 +109,14 @@ public class UserInterface {
                 switch (input) {
                     case "BLT":
                         BLTSandwich bltSandwich = new BLTSandwich();
-                        order.addProduct(bltSandwich);
 
+                        bltSandwich.addDefaultIngredients();
+                        order.addProduct(bltSandwich);
                         System.out.println("BLT sandwich is successfully added to your cart.");
                         break;
                     case "PHILLY":
                         PhillyCheeseSteak phillyCheeseSteak = new PhillyCheeseSteak();
+                        phillyCheeseSteak.addDefaultIngredients();
 
                         order.addProduct(phillyCheeseSteak);
                         System.out.println("Philly Cheese Steak sandwich is successfully added to your cart.");
@@ -462,6 +464,7 @@ public class UserInterface {
                 if (input.equalsIgnoreCase("y")) {
                     order.completeOrder(order);
                     System.out.println("Order placed successfully! Thank you!");
+                    order.clearProducts();
                     valid = false;
 
                 } else if (input.equalsIgnoreCase("x")) {
