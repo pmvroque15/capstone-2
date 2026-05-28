@@ -33,19 +33,4 @@ public class  ReceiptManager {
 
         return filename;
     }
-
-    public static void deleteReceipt(String filename) {
-        if (filename != null && !filename.isEmpty()) {
-            File file = new File(filename);
-
-            if(file.exists()) {
-                if (file.delete()) {
-                    System.out.println("Receipt file deleted.");
-                }
-            } else {
-                System.out.println("Failed to delete receipt file.");
-            }
-        }
-        filename = "";
-    }
 }
