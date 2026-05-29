@@ -3,10 +3,10 @@ package com.pluralsight.collect;
 import java.util.HashSet;
 
 public class Sandwich implements Product {
-    protected SandwichSize sandwichSize;
-    protected BreadType breadType;
-    HashSet<Product> ingredients = new HashSet<>();
-    boolean isToasted;
+    private final SandwichSize sandwichSize;
+    private BreadType breadType;
+    private final HashSet<Product> ingredients = new HashSet<>();
+    private boolean isToasted;
 
     public Sandwich(SandwichSize sandwichSize, BreadType breadType, boolean isToasted) {
         this.sandwichSize = sandwichSize;
@@ -14,11 +14,21 @@ public class Sandwich implements Product {
         this.isToasted = isToasted;
     }
 
+    public Sandwich(SandwichSize sandwichSize, BreadType breadType) {
+        this.breadType = breadType;
+        this.sandwichSize = sandwichSize;
+        isToasted = false;
+    }
+
+    public Sandwich(SandwichSize sandwichSize) {
+        this.sandwichSize = sandwichSize;
+    }
+
     public String getSize() {
         String size = "";
-        if(sandwichSize.equals(SandwichSize.FOUR_INCH)) {
+        if (sandwichSize.equals(SandwichSize.FOUR_INCH)) {
             size = "FOUR INCH";
-        } else if(sandwichSize.equals(SandwichSize.EIGHT_INCH)) {
+        } else if (sandwichSize.equals(SandwichSize.EIGHT_INCH)) {
             size = "EIGHT INCH";
         } else if (sandwichSize.equals(SandwichSize.TWELVE_INCH)) {
             size = "TWELVE INCH";
@@ -28,7 +38,7 @@ public class Sandwich implements Product {
     }
 
     public void addIngredient(Product ingredient) {
-        if(ingredient == null) {
+        if (ingredient == null) {
             return;
         }
         ingredients.add(ingredient);
@@ -38,7 +48,6 @@ public class Sandwich implements Product {
     public String getName() {
         return "Sandwich";
     }
-
     @Override
     public boolean isExtra() {
         return false;
@@ -79,16 +88,16 @@ public class Sandwich implements Product {
 
             String name = p.getName();
 
-            if(name == null || name.isBlank()) {
+            if (name == null || name.isBlank()) {
                 continue;
             }
 
 
             //if extra ingredient, then append extra after the ingredient
             if (p.isExtra()) {
-                sb.append(String.format("  - EXTRA %-28s  %5.2f%n",name, p.calculatePrice()));
+                sb.append(String.format("  - EXTRA %-28s  %5.2f%n", name, p.calculatePrice()));
             } else {
-                sb.append(String.format("  - %-35s %5.2f%n",name, p.calculatePrice()));
+                sb.append(String.format("  - %-35s %5.2f%n", name, p.calculatePrice()));
             }
         }
         //returns to the toString of sb object!

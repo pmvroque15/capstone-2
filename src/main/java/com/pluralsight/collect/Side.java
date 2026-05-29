@@ -20,8 +20,4 @@ public class Side implements Product {
         return 0;
     }
 
-    @Override
-    public String toString() {
-        return String.format("SIDE: %s%nPRICE: $%.2f", getName(), calculatePrice());
-    }
 }

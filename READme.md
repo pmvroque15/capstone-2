@@ -9,6 +9,7 @@
 - [Biggest Challenge](#biggest-challenge)
 - [Part/s I am proud of](#part/s-i-am-proud-of)
 - [Next steps?](#next-steps)
+- 
 
 ---
 
@@ -45,12 +46,12 @@ Honestly... the whole project. Pat on my back(no pun intended!)
 - Making a UML diagram. We didn't really go in depth of how to make one but I was curious so I made a whole research of how to make one and what purpose of each symbol on the list. From making on a paper to making flowcharts how classes are related to each other.
 
 from this
-
-[insert picture of the scratch papers]
+![first_draft(2).jpeg](utilities/images/first_draft%282%29.jpeg)
+![first_draft.jpeg](utilities/images/first_draft.jpeg)
 
 to this
 
-[insert the first UML diagram]
+![second_draft.png](utilities/images/second_draft.png)
 
 to **THIS**
 
@@ -66,4 +67,33 @@ this special character is referring the current object being passed in the metho
 
 - **ENUMS**
 
-It's 
+At this point my brain  is like: 
+
+![hammer-spongebob.gif](utilities/images/hammer-spongebob.gif)
+
+Kidding aside, using enums for the first time as well for the sandwich size, bread type, and drink size.
+
+```java
+public enum SandwichSize {
+    FOUR_INCH(5.50),
+    EIGHT_INCH(7.00),
+    TWELVE_INCH(8.50);
+    private double price = 0;
+    SandwichSize(double price) {
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+}
+```
+Reference: 
+
+Baeldung. (2025, December 17). Attaching values to Java enum. Baeldung. https://www.baeldung.com/java-enum-values
+
+This way, it made my code more readable and can reuse the values easily. 
+
+---
+
+

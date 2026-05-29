@@ -13,8 +13,8 @@ public class BLTSandwich extends Sandwich{
     }
 
     public void addDefaultIngredients() {
-        super.addIngredient(new Meat("Bacon", sandwichSize, false));
-        super.addIngredient(new Cheese("Cheddar", sandwichSize, false));
+        super.addIngredient(new Meat( "Bacon",SandwichSize.EIGHT_INCH, BreadType.WHITE, false));
+        super.addIngredient(new Cheese("Cheddar", SandwichSize.EIGHT_INCH, BreadType.WHITE, false));
 
         String[] BLT = {"Lettuce", "Tomatoes", "Pickles", "Ranch"};
 

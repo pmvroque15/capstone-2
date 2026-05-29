@@ -14,8 +14,8 @@ public class PhillyCheeseSteak extends Sandwich {
     }
 
     public void addDefaultIngredients() {
-        super.addIngredient(new Meat("Steak", sandwichSize, false));
-        super.addIngredient(new Cheese("American Cheese", sandwichSize, false));
+        super.addIngredient(new Meat("Steak", SandwichSize.EIGHT_INCH, BreadType.WHITE, true));
+        super.addIngredient(new Cheese( "American Cheese", SandwichSize.EIGHT_INCH,BreadType.WHITE, false));
         String[] philly = {"Peppers", "Mayo"};
 
         for (String ingredient : philly) {
