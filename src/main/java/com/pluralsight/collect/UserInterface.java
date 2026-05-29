@@ -394,7 +394,7 @@ public class UserInterface {
         while (size == null) {
             try {
                 System.out.println("What size? (Small, Medium, Large)");
-                size = DrinkSize.valueOf(scanner.nextLine().toUpperCase());
+                size = DrinkSize.valueOf(scanner.nextLine().trim().toUpperCase());
 
             } catch (IllegalArgumentException e) {
                 System.err.println("Invalid size. Try again.");
