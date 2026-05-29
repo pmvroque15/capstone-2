@@ -54,7 +54,7 @@ my free time to apply advance OOP concepts and make it robust and impactful appl
 
 Honestly... the whole project. Pat on my back(no pun intended!)
 
-- Making a UML diagram. We didn't really go in depth of how to make one but I was curious so I made a whole research of
+- Making a UML diagram. We didn't really go in depth of how to make one, but I was curious, so I made a whole research of
   how to make one and what purpose of each symbol on the list. From making on a paper to making flowcharts how classes
   are related to each other.
 

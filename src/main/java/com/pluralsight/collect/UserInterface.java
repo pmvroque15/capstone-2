@@ -213,6 +213,7 @@ public class UserInterface {
 
             String topping = chooseFromMenu("Pick a topping: ", toppings);
 
+
             if (topping == null) {
                 running = false;
             } else {
@@ -222,14 +223,12 @@ public class UserInterface {
                     System.err.printf("Yo, what's up with your %s? Try another topping.", topping);
                 }
 
-            }
+                System.out.println("Do you want to add another topping? (y/n)");
 
-            System.out.println("Do you want to add another topping? (y/n)");
-
-            String input = scanner.nextLine();
-
-            if (!input.equalsIgnoreCase("y")) {
-                running = false;
+                String input = scanner.nextLine();
+                if (!input.equalsIgnoreCase("y")) {
+                    running = false;
+                }
             }
 
         }
@@ -246,7 +245,7 @@ public class UserInterface {
             return null;
         }
 
-        System.out.printf("Do you want extra of %s? (y/n):", cheese);
+        System.out.printf("Do you want extra of %s cheese? (y/n):", cheese);
 
         boolean isExtra = scanner.nextLine().equalsIgnoreCase("y");
 
@@ -257,7 +256,7 @@ public class UserInterface {
 
         while (true) {
             System.out.println("Would you like the sandwich toasted? (y/n):");
-            String toasted = scanner.nextLine();
+            String toasted = scanner.nextLine().trim();
 
             if (toasted.equalsIgnoreCase("y")) {
                 return true;
@@ -367,7 +366,7 @@ public class UserInterface {
 
             System.out.println("(Please Enter to skip)");
 
-            String input = scanner.nextLine();
+            String input = scanner.nextLine().trim();
 
             if (input.isEmpty()) {
                 return null;
@@ -411,7 +410,7 @@ public class UserInterface {
 
     public void addTips(Order order) {
 
-        while(true){
+        while (true) {
 
             System.out.println("Would you like to add a tip? (y/n):");
             String input = scanner.nextLine().trim();
@@ -429,7 +428,7 @@ public class UserInterface {
                         System.out.print("Enter tip amount:  $");
                         double tip = Double.parseDouble(scanner.nextLine().trim());
 
-                        if(tip < 0) {
+                        if (tip < 0) {
                             System.err.println("Tip cannot be negative");
                             continue;
                         }
@@ -463,23 +462,23 @@ public class UserInterface {
             System.out.println("Place your order? \"y\" to check out, \"n\" to go back to the menu, \"x\" to cancel the order.");
             String input = scanner.nextLine();
 
-                if (input.equalsIgnoreCase("y")) {
-                    order = order.checkOut();
-                    System.out.println("Order placed successfully! Thank you!");
+            if (input.equalsIgnoreCase("y")) {
+                order = order.checkOut();
+                System.out.println("Order placed successfully! Thank you!");
 
-                    valid = false;
-                } else if (input.equalsIgnoreCase("x")) {
-                    order.cancelOrder();
-                    System.out.println("Order is canceled.");
+                valid = false;
+            } else if (input.equalsIgnoreCase("x")) {
+                order.cancelOrder();
+                System.out.println("Order is canceled.");
 
-                    valid = false;
-                } else if (input.equalsIgnoreCase("n")) {
-                    System.out.println("Returning to the menu...");
+                valid = false;
+            } else if (input.equalsIgnoreCase("n")) {
+                System.out.println("Returning to the menu...");
 
-                    valid = false;
-                } else {
-                    System.err.println("Invalid input. Try again.");
-                }
+                valid = false;
+            } else {
+                System.err.println("Invalid input. Try again.");
+            }
         }
     }
 }

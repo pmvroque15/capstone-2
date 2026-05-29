@@ -99,7 +99,14 @@ public class Order {
                 sb.append("BLT SANDWICH\n").append(p).append("\n");
             } else if (p instanceof PhillyCheeseSteak) {
                 sb.append("PHILLY SANDWICH\n").append(p).append("\n");
-            } else {
+            } else if(p instanceof Sauce){
+                Sauce sauce = (Sauce) p;
+                sb.append(String.format("  - %-35s %5.2f%n", sauce.getName(), sauce.calculatePrice()));
+            }else if(p instanceof Side){
+                Side side = (Side) p;
+                sb.append(String.format("  - %-35s %5.2f%n", side.getName(), side.calculatePrice()));
+            }
+                else {
                 sb.append(p).append("\n");
 
             }
