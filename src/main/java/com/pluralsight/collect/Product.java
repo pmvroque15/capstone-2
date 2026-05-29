@@ -7,4 +7,5 @@ public interface Product {
     String getName();
 
     boolean isExtra();
+
 }

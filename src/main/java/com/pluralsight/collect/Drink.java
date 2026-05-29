@@ -1,7 +1,7 @@
 package com.pluralsight.collect;
 
 public class Drink implements Product {
-    DrinkSize drinkSize;
+    private final DrinkSize drinkSize;
     private final double price;
     public Drink(DrinkSize drinkSize) {
         this.drinkSize = drinkSize;
@@ -28,6 +28,6 @@ public class Drink implements Product {
     }
 
     public String toString(){
-        return String.format("%s %-33s %.2f", getDrinkSize(), getName(), calculatePrice());
+        return String.format("%s %-34s %.2f", getDrinkSize(), getName(), calculatePrice());
     }
 }

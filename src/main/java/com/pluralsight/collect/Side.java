@@ -1,14 +1,13 @@
 package com.pluralsight.collect;
 
-public class Side implements Product {
-    private final String name;
+public class Side extends Sandwich implements Product {
 
     public Side(String name) {
-        this.name = name;
+        super(name);
     }
 
     public String getName() {
-        return name;
+        return super.getName();
     }
 
     public boolean isExtra() {

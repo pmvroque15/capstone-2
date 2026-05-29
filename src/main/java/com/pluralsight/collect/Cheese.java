@@ -46,12 +46,4 @@ public class Cheese extends Sandwich implements Product{
         };
 
     }
-
-    @Override
-    public String toString() {
-        if (!isExtra) {
-            return String.format("CHEESE: %s%nPRICE: $%.2f%n", getName(), calculatePrice());
-        }
-        return String.format("CHEESE: %s(extra)%nPRICE: $%.2f%n", getName(), calculatePrice());
-    }
 }

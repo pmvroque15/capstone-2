@@ -43,13 +43,5 @@ public class Meat extends Sandwich implements Product  {
             case TWELVE_INCH -> 3.00;
         };
     }
-
-    @Override
-    public String toString() {
-        if (!isExtra) {
-            return String.format("MEAT: %s%nPRICE: $%.2f%n", getName(), calculatePrice());
-        }
-        return String.format("MEAT: %s(extra)%nPRICE: $%.2f%n", getName(), calculatePrice());
-    }
 }
 

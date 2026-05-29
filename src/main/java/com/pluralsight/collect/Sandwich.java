@@ -3,10 +3,11 @@ package com.pluralsight.collect;
 import java.util.HashSet;
 
 public class Sandwich implements Product {
-    private final SandwichSize sandwichSize;
+    private SandwichSize sandwichSize;
     private BreadType breadType;
     private final HashSet<Product> ingredients = new HashSet<>();
     private boolean isToasted;
+    private String name;
 
     public Sandwich(SandwichSize sandwichSize, BreadType breadType, boolean isToasted) {
         this.sandwichSize = sandwichSize;
@@ -22,6 +23,10 @@ public class Sandwich implements Product {
 
     public Sandwich(SandwichSize sandwichSize) {
         this.sandwichSize = sandwichSize;
+    }
+
+    public Sandwich(String name) {
+        this.name = name;
     }
 
     public String getSize() {
@@ -48,7 +53,7 @@ public class Sandwich implements Product {
     public String getName() {
         return "Sandwich";
     }
-    @Override
+
     public boolean isExtra() {
         return false;
     }

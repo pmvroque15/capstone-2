@@ -1,15 +1,13 @@
 package com.pluralsight.collect;
 
-public class Sauce implements Product{
-    private final String name;
+public class Sauce extends Sandwich implements Product{
 
     public Sauce(String name) {
-        this.name = name;
+        super(name);
     }
 
-
     public String getName() {
-        return name;
+        return super.getName();
     }
 
     public boolean isExtra() {
@@ -20,5 +18,4 @@ public class Sauce implements Product{
     public double calculatePrice() {
         return 0;
     }
-
 }
