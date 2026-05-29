@@ -7,7 +7,6 @@ public class Sandwich implements Product {
     private BreadType breadType;
     private final HashSet<Product> ingredients = new HashSet<>();
     private boolean isToasted;
-    private String name;
 
     public Sandwich(SandwichSize sandwichSize, BreadType breadType, boolean isToasted) {
         this.sandwichSize = sandwichSize;
@@ -26,7 +25,6 @@ public class Sandwich implements Product {
     }
 
     public Sandwich(String name) {
-        this.name = name;
     }
 
     public String getSize() {
@@ -70,7 +68,7 @@ public class Sandwich implements Product {
     }
 
     //    Using StringBuilder to append customizations of the sandwich for order summary.
-//    Thought of just looping through the ingredients Hashset but every loop, it creates a brand new object vs. StringBuilder
+//    Thought of just looping through the ingredients Hashset but every loop, it creates a brand-new object vs. StringBuilder
 //    it just builds one whole bigString object in memory. Saves time and memory
     @Override
     public String toString() {

@@ -9,8 +9,7 @@
 - [Overview](#Overview)
 - [Biggest Challenge](#biggest-challenge)
 - [Next steps?](#what-are-the-next-steps)
-- [Biggest Challenge](#biggest-challenge)
-- [Part/s I am proud of](#part/s-i-am-proud-of)
+- [Part/s I am proud of](#parts-i-am-proud-of)
 - [About me](#about-me)
 - [Resources](#resources)
 
@@ -98,7 +97,7 @@ public enum SandwichSize {
     FOUR_INCH(5.50),
     EIGHT_INCH(7.00),
     TWELVE_INCH(8.50);
-    private double price = 0;
+    private final double price;
 
     SandwichSize(double price) {
         this.price = price;
