@@ -30,10 +30,6 @@ public class Order {
         products.clear();
     }
 
-    public void completeOrder(Order order) {
-        ReceiptManager.saveReceipt(order);
-    }
-
     public void setTipsAmount(double tipsAmount) {
         this.tipsAmount = tipsAmount;
     }
@@ -46,6 +42,20 @@ public class Order {
 
         return subtotal * TAX_RATE_NYC;
     }
+
+    public Order checkOut() {
+        ReceiptManager.saveReceipt(this);
+        clearProducts();
+        this.tipsAmount = 0;
+
+        return new Order();
+    }
+
+    public void cancelOrder() {
+        clearProducts();
+        this.tipsAmount = 0;
+    }
+
 
     public double subTotal() {
 
@@ -65,6 +75,8 @@ public class Order {
         double tips = this.tipsAmount;
         return subTotal() + calculateTax(subTotal()) + tips;
     }
+
+
 
     @Override
     public String toString() {

@@ -85,7 +85,7 @@ public class UserInterface {
                         chooseASignatureSandwich(order);
                         break;
                     case 0:
-                        cancelOrder(order);
+                        order.cancelOrder();
                         running = false;
 
                         break;
@@ -409,36 +409,40 @@ public class UserInterface {
         System.out.println("Thank you for using the app!");
     }
 
-    //todo move it to the Order class ?
-    public void cancelOrder(Order order) {
-
-        order.clearProducts();
-
-        System.out.println("Order is canceled.");
-    }
-
-    //todo add this in the order class
     public void addTips(Order order) {
 
-        System.out.println("Would you like to add a tip? (y/n):");
-        String input = scanner.nextLine().trim();
+        while(true){
 
-        if (input.equalsIgnoreCase("n")) {
-            order.setTipsAmount(0);
-        } else if (input.equalsIgnoreCase("y")) {
-            boolean isValid = false;
-            do {
-                try {
-                    System.out.print("Tip:  $");
-                    double tip = Double.parseDouble(scanner.nextLine().trim());
-                    order.setTipsAmount(tip);
+            System.out.println("Would you like to add a tip? (y/n):");
+            String input = scanner.nextLine().trim();
 
-                    System.out.println("Tip added to the total!");
-                    isValid = true;
-                } catch (NumberFormatException e) {
-                    System.err.println("Invalid input. Try again.");
+            if (input.equalsIgnoreCase("n")) {
+                order.setTipsAmount(0);
+                return;
+
+            }
+
+            if (input.equalsIgnoreCase("y")) {
+
+                while (true) {
+                    try {
+                        System.out.print("Enter tip amount:  $");
+                        double tip = Double.parseDouble(scanner.nextLine().trim());
+
+                        if(tip < 0) {
+                            System.err.println("Tip cannot be negative");
+                            continue;
+                        }
+
+                        order.setTipsAmount(tip);
+                        System.out.println("Tip added to the total!");
+                        return;
+                    } catch (NumberFormatException e) {
+                        System.err.println("Invalid input. Try again.");
+                    }
                 }
-            } while (!isValid);
+            }
+            System.err.println("Please enter 'y' or 'n'.");
         }
     }
 
@@ -454,24 +458,24 @@ public class UserInterface {
 
         System.out.println(order);
 
-
-        //todo validation of input user can press anything to go back
         boolean valid = true;
         while (valid) {
-            System.out.println("Place your order? Type \"y\" to check out, \"n\" to go back to the menu, \"x\" to cancel the order.");
+            System.out.println("Place your order? \"y\" to check out, \"n\" to go back to the menu, \"x\" to cancel the order.");
             String input = scanner.nextLine();
 
                 if (input.equalsIgnoreCase("y")) {
-                    order.completeOrder(order);
+                    order = order.checkOut();
                     System.out.println("Order placed successfully! Thank you!");
-                    order.clearProducts();
-                    valid = false;
 
+                    valid = false;
                 } else if (input.equalsIgnoreCase("x")) {
-                    cancelOrder(order);
+                    order.cancelOrder();
+                    System.out.println("Order is canceled.");
+
                     valid = false;
                 } else if (input.equalsIgnoreCase("n")) {
                     System.out.println("Returning to the menu...");
+
                     valid = false;
                 } else {
                     System.err.println("Invalid input. Try again.");

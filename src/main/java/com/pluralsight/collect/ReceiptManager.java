@@ -11,9 +11,9 @@ public class  ReceiptManager {
     private static final String EXTENSION_FILE = ".txt";
 
     public static void saveReceipt(Order order) {
-        LocalDateTime orderTime = order.getOrderTime();
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss");
-        String filename = DIRECTORY_PATH + orderTime.format(dateTimeFormatter) + EXTENSION_FILE;
+        //todo ask the PO about overwritting the file when it's the same file: change the file format OR add ID?
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
+        String filename = DIRECTORY_PATH + order.getOrderTime().format(dateTimeFormatter) + EXTENSION_FILE;
 
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename));
